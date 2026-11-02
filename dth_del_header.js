@@ -1,15 +1,30 @@
 /***********************************************
-> dth - Delete RevenueCat ETag & Cache Header
+> dth - RevenueCat Header Cleaner & US Geo Spoof
 > Author: dth206
 > Repository: https://github.com/dth20006/shadow
 ***********************************************/
-function setHeaderValue(e, a, d) {
-    var r = a.toLowerCase();
-    r in e ? (e[r] = d) : (e[a] = d);
-}
-var modifiedHeaders = $request.headers || {};
-setHeaderValue(modifiedHeaders, "X-RevenueCat-ETag", "");
-setHeaderValue(modifiedHeaders, "x-revenuecat-etag", "");
-setHeaderValue(modifiedHeaders, "If-None-Match", "");
-setHeaderValue(modifiedHeaders, "if-none-match", "");
-$done({ headers: modifiedHeaders });
+(function () {
+  "use strict";
+  try {
+    var req = typeof $request === "object" ? $request : {};
+    var headers = Object.assign({}, req.headers || {});
+    var keys = Object.keys(headers);
+    for (var i = 0; i < keys.length; i++) {
+      var k = keys[i].toLowerCase();
+      if (k === "x-revenuecat-etag" || k === "if-none-match") {
+        delete headers[keys[i]];
+      }
+    }
+
+    headers["X-Forwarded-For"] = "8.8.8.8";
+    headers["CF-Connecting-IP"] = "8.8.8.8";
+    headers["True-Client-IP"] = "8.8.8.8";
+    headers["Fastly-Client-IP"] = "8.8.8.8";
+    headers["X-Real-IP"] = "8.8.8.8";
+    headers["CF-IPCountry"] = "US";
+
+    return $done({ headers: headers });
+  } catch (e) {
+    return $done({});
+  }
+})();

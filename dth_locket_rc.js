@@ -7,15 +7,19 @@
 // ============================================================
 
 var ua = ($request && $request.headers) ? ($request.headers["User-Agent"] || $request.headers["user-agent"] || "") : "";
-var obj = {};
+var obj = null;
 try {
     obj = JSON.parse($response.body);
 } catch (e) {
-    obj = {};
+    obj = null;
 }
 
-obj.Attention = "Locket Gold VIP - dth206";
-obj.entries = obj.entries || {};
+if (!obj || typeof obj !== "object" || Array.isArray(obj)) {
+    $done({});
+} else {
+    obj.Attention = "👑 Locket Gold VIP - dth206";
+    obj.state = "UPDATE";
+    obj.entries = obj.entries || {};
 
     // ============================================================
     // 1. CẤU HÌNH GOLD, FEATURE GATES & PAYWALL
@@ -439,6 +443,35 @@ obj.entries = obj.entries || {};
             {
                 section: "👑 DTH206 VIP EXCLUSIVE",
                 items: [
+                    { overlay_id: "caption:dth206_coder", source: "remote", caption: { background: { colors: ["#B8E7FF", "#A8F5D0", "#DCCBFF"] }, max_lines: 1, text: "💻 dth206 VIP", text_color: "#183153", type: "static_content" } },
+                    { overlay_id: "caption:dth206_cu", source: "remote", caption: { background: { colors: ["#FFD6A5", "#FFF1A8", "#FFC4D6"] }, max_lines: 1, text: "Cu 🐎", text_color: "#633B24", type: "static_content" } },
+                    { overlay_id: "caption:dth206_trai_tim", source: "remote", caption: { background: { colors: ["#56CCF2", "#2F80ED"] }, icon: { data: "💙", type: "emoji" }, max_lines: 1, text: "Trái tim dth206 💖", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:dth206_thuong_men", source: "remote", caption: { background: { colors: ["#FFD1DC", "#FFB7C5", "#FFE4E1"] }, icon: { data: "👑", type: "emoji" }, max_lines: 1, text: "Thương mến dth206 💛", text_color: "#6E4254", type: "static_content" } },
+                    { overlay_id: "caption:custom_deadline_duoi", source: "remote", caption: { background: { colors: ["#DC2626", "#991B1B"] }, icon: { data: "🔥", type: "emoji" }, max_lines: 1, text: "Deadline dí tụt quần", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:custom_code_chay_la_duoc", source: "remote", caption: { background: { colors: ["#059669", "#047857"] }, icon: { data: "💻", type: "emoji" }, max_lines: 1, text: "Code chạy là được", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:custom_vua_ngu_vua_giau", source: "remote", caption: { background: { colors: ["#D97706", "#B45309"] }, icon: { data: "💰", type: "emoji" }, max_lines: 1, text: "Vừa ngủ vừa giàu", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:custom_tinh_yeu_bao_tri", source: "remote", caption: { background: { colors: ["#7C3AED", "#6D28D9"] }, icon: { data: "🛠️", type: "emoji" }, max_lines: 1, text: "Tình yêu đang bảo trì", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:quote", source: "local", caption: { type: "quote" } },
+                    { overlay_id: "caption:custom_khong_cau_cau", source: "remote", caption: { background: { colors: ["#DB2777", "#BE185D"] }, icon: { data: "😤", type: "emoji" }, max_lines: 1, text: "Không có quạu nha", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:custom_dep_khong_can_filter", source: "remote", caption: { background: { colors: ["#F59E0B", "#D97706"] }, icon: { data: "✨", type: "emoji" }, max_lines: 1, text: "Đẹp không cần filter", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:custom_crush_seen", source: "remote", caption: { background: { colors: ["#1D4ED8", "#1E40AF"] }, icon: { data: "👁️", type: "emoji" }, max_lines: 1, text: "Crush đã xem 💔", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:cho_anh_chut_thoi", source: "remote", caption: { background: { colors: ["#F4A261", "#E76F51"] }, icon: { data: "⏳", type: "emoji" }, max_lines: 1, text: "Chờ anh chút thôi", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:custom_nhin_gi", source: "remote", caption: { background: { colors: ["#BE185D", "#9D174D"] }, icon: { data: "👀", type: "emoji" }, max_lines: 1, text: "Nhìn cái gì mà nhìn", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:custom_ngu_5_phut", source: "remote", caption: { background: { colors: ["#312E81", "#1E1B4B"] }, icon: { data: "😴", type: "emoji" }, max_lines: 1, text: "Ngủ thêm 5 phút nữa", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:bung_no", source: "remote", caption: { background: { colors: ["#FF6B6B", "#FF8E53"] }, icon: { data: "💥", type: "emoji" }, max_lines: 1, text: "Bùng nổ visual 🔥", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:custom_wifi_tinh_yeu", source: "remote", caption: { background: { colors: ["#0284C7", "#0369A1"] }, icon: { data: "📶", type: "emoji" }, max_lines: 1, text: "Wifi tình yêu mất sóng", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:custom_bug_la_ban", source: "remote", caption: { background: { colors: ["#166534", "#14532D"] }, icon: { data: "🐛", type: "emoji" }, max_lines: 1, text: "Bug là tính năng", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:breaking_news", source: "local", caption: { type: "breaking_news" } },
+                    { overlay_id: "caption:bien_oiiii", source: "remote", caption: { background: { colors: ["#56CFE1", "#48CAE4"] }, icon: { data: "🌊", type: "emoji" }, max_lines: 1, text: "Biển ơiiiii 🏖️", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:dang_truc_tiep", source: "remote", caption: { background: { colors: ["#000000", "#DC2626"] }, icon: { data: "🔴", type: "emoji" }, max_lines: 1, text: "ĐANG TRỰC TIẾP", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:custom_hong_on_nhung_on", source: "remote", caption: { background: { colors: ["#9333EA", "#7E22CE"] }, icon: { data: "🙃", type: "emoji" }, max_lines: 1, text: "Hổng ổn nhưng mà ổn", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:custom_luong_ve_chua", source: "remote", caption: { background: { colors: ["#10B981", "#059669"] }, icon: { data: "💸", type: "emoji" }, max_lines: 1, text: "Lương về chưa ta?", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:custom_yeu_la_phai_an", source: "remote", caption: { background: { colors: ["#F97316", "#EA580C"] }, icon: { data: "🍲", type: "emoji" }, max_lines: 1, text: "Yêu là phải ăn 🍕", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:thuong_men_tram_lam_truc_ly", source: "remote", caption: { background: { colors: ["#F4BFD3", "#F9D9CF", "#DCCDF5"] }, icon: { data: "🎀", type: "emoji" }, max_lines: 1, text: "Trúc Ly thương mến", text_color: "#70465F", type: "static_content" } },
+                    { overlay_id: "caption:thuong_men_nguyen_hoang_hao", source: "remote", caption: { background: { colors: ["#F2B5C8", "#F8D5D9", "#F6E5D2"] }, icon: { data: "✨", type: "emoji" }, max_lines: 1, text: "Hoàng Hảo thương mến", text_color: "#754454", type: "static_content" } },
+                    { overlay_id: "caption:thuong_men_thich_an_mam", source: "remote", caption: { background: { colors: ["#F2AFC6", "#F7C9D9", "#E5CFF4"] }, icon: { data: "😋", type: "emoji" }, max_lines: 1, text: "Thích ăn mắm ghê", text_color: "#70445C", type: "static_content" } },
+                    { overlay_id: "caption:thuong_men_ngoan_xinh_yeu", source: "remote", caption: { background: { colors: ["#B8C9F2", "#D5DDF8", "#E8CFF0"] }, icon: { data: "🧸", type: "emoji" }, max_lines: 1, text: "Ngoan xinh yêu của dth206", text_color: "#414C72", type: "static_content" } },
+                    { overlay_id: "caption:thuong_men_yeu_oiiii", source: "remote", caption: { background: { colors: ["#FFB6C1", "#FF69B4", "#FF1493"] }, icon: { data: "🥰", type: "emoji" }, max_lines: 1, text: "Yêu ơiiii là yêu 💖", text_color: "#FFFFFFE6", type: "static_content" } },
                     { overlay_id: "caption:dth206_crown", source: "remote", caption: { background: { colors: ["#FFD700", "#FFA500", "#FF8C00"] }, icon: { data: "crown.fill", type: "sf_symbol", color: "#1A1A1A" }, max_lines: 1, text: "dth206 👑", text_color: "#1A1A1A", type: "static_content" } },
                     { overlay_id: "caption:dth206_gold", source: "remote", caption: { background: { colors: ["#B8E7FF", "#A8F5D0", "#DCCBFF"] }, icon: { data: "sparkles", type: "sf_symbol", color: "#183153" }, max_lines: 1, text: "dth206 • Gold VIP ✨", text_color: "#183153", type: "static_content" } },
                     { overlay_id: "caption:dth206_verified", source: "remote", caption: { background: { colors: ["#00F2FE", "#4FACFE"] }, icon: { data: "checkmark.seal.fill", type: "sf_symbol", color: "#FFFFFF" }, max_lines: 1, text: "Verified by dth206 🛡️", text_color: "#FFFFFF", type: "static_content" } },
@@ -705,3 +738,4 @@ obj.entries = obj.entries || {};
     });
 
 $done({ body: JSON.stringify(obj) });
+}

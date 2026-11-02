@@ -9,7 +9,7 @@
   try {
     var req = typeof $request === "object" ? $request : {};
     var url = String(req.url || "");
-    var target = /^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/namespaces\/firebase:fetch(?:\?|$)/;
+    var target = /^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/(?:locket-4252a|locket-camera)\/namespaces\/firebase:fetch(?:\?|$)/;
 
     if (!target.test(url)) return $done({});
     if (req.method !== "POST") return $done({});
