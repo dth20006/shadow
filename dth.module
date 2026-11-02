@@ -1,5 +1,5 @@
 #!name=👑 Locket Gold All-In-One (dth)
-#!desc=Module Locket Gold VIP tổng hợp tinh túy bởi dth206 | Full Gold Vĩnh Viễn + Video 60s + Khung Ảnh Shin-chan + Trọn Bộ Caption VIP + Chặn Quảng Cáo & Tracking
+#!desc=Module Locket Gold VIP tổng hợp tinh túy bởi dth206 | Full Gold Vĩnh Viễn + Video 60s + Khung Ảnh Shin-chan + Hơn 250+ Caption VIP + Chặn Quảng Cáo & Tracking
 #!author=dth206
 #!homepage=https://github.com/dth20006/shadow
 
@@ -8,17 +8,14 @@
 ^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/?(.*?)*$) header-del X-RevenueCat-ETag
 
 [Script]
-# 1. Chặn ETag RevenueCat request để luôn làm mới thông tin Gold
-dth_del_header = type=http-request, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers), script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_del_header.js, timeout=10
+# 1. Chặn ETag RevenueCat request
+deleteHeader = type=http-request, pattern=^https:\/\/(?:api\.revenuecat\.com|api\.rc-backup\.com)\/.+\/(?:receipts|subscribers), script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_del_header.js, timeout=60
 
-# 2. Mở khóa Gold vĩnh viễn qua RevenueCat
-dth_revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_locket_gold.js, requires-body=true, max-size=-1, timeout=60
+# 2. Mở khóa Gold vĩnh viễn qua RevenueCat response
+revenuecat = type=http-response, pattern=^https:\/\/(?:api\.revenuecat\.com|api\.rc-backup\.com)\/.+\/(?:receipts|subscribers\/[^/]+), script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth.js, requires-body=true, max-size=-1, timeout=60
 
-# 3. Tối ưu hóa Firebase Remote Config Request (ép server trả full config US)
-dth_rc_request = type=http-request, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/namespaces\/firebase:fetch, requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_rc_request.js, timeout=10
-
-# 4. Bơm trọn bộ tính năng tinh túy (Video 60s, Khung Shin-chan, Bạn bè vô hạn, Full Captions, Chặn QC)
-dth_rc_unlock = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_locket_rc.js, requires-body=true, max-size=-1, timeout=60
+# 3. Bơm trọn bộ tính năng tinh túy: Video 60s, Khung Shin-chan, 250+ Captions, Bạn bè vô hạn, Chặn QC
+locket_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth.js, requires-body=true, max-size=-1, timeout=60
 
 [MITM]
 hostname = %APPEND%, api.revenuecat.com, firebaseremoteconfig.googleapis.com, api.rc-backup.com

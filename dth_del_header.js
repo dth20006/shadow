@@ -3,20 +3,10 @@
 > Author: dth206
 > Repository: https://github.com/dth20006/shadow
 ***********************************************/
-(function () {
-  "use strict";
-  try {
-    var req = typeof $request === "object" ? $request : {};
-    var headers = Object.assign({}, req.headers || {});
-    var keys = Object.keys(headers);
-    for (var i = 0; i < keys.length; i++) {
-      var k = keys[i].toLowerCase();
-      if (k === "x-revenuecat-etag" || k === "if-none-match") {
-        delete headers[keys[i]];
-      }
-    }
-    $done({ headers: headers });
-  } catch (err) {
-    $done({});
-  }
-})();
+function setHeaderValue(e, a, d) {
+  var r = a.toLowerCase();
+  r in e ? (e[r] = d) : (e[a] = d);
+}
+var modifiedHeaders = $request.headers || {};
+setHeaderValue(modifiedHeaders, "X-RevenueCat-ETag", "");
+$done({ headers: modifiedHeaders });
