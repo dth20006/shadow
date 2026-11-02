@@ -10,7 +10,47 @@ var ua = ($request.headers && ($request.headers["User-Agent"] || $request.header
 var obj = JSON.parse($response.body || "{}");
 
 // 1. NẾU LÀ API REVENUECAT -> MỞ KHÓA LOCKET GOLD VĨNH VIỄN (9999)
-if (url.indexOf("revenuecat.com") !== -1 || url.indexOf("rc-backup.com") !== -1) {
+
+// 3. NẾU LÀ API LOCKETCAMERA.COM (PROFILE & BADGE)
+if (url.indexOf("locketcamera.com") !== -1) {
+    if (url.indexOf("changeProfileInfo") !== -1) {
+        $done({
+            response: {
+                status: 200,
+                headers: { "Content-Type": "application/json; charset=utf-8", "Access-Control-Allow-Origin": "*" },
+                body: JSON.stringify({
+                    data: { badge: "locket_gold", badge_tier: "gold", is_gold: true, has_badge: true, success: true },
+                    result: { badge: "locket_gold", badge_tier: "gold", is_gold: true, has_badge: true, success: true }
+                })
+            }
+        });
+    } else {
+        function injectBadge(o) {
+            if (!o || typeof o !== "object") return;
+            if ("badge" in o || "badge_tier" in o || "is_gold" in o || "user_name" in o || "phone_number" in o) {
+                o.badge = "locket_gold";
+                o.badge_tier = "gold";
+                o.is_gold = true;
+                o.has_badge = true;
+            }
+            for (var k in o) {
+                if (Object.prototype.hasOwnProperty.call(o, k) && typeof o[k] === "object" && o[k] !== null) {
+                    injectBadge(o[k]);
+                }
+            }
+        }
+        var bodyStr = $response ? $response.body : null;
+        if (bodyStr) {
+            try {
+                var profileObj = JSON.parse(bodyStr);
+                injectBadge(profileObj);
+                bodyStr = JSON.stringify(profileObj);
+            } catch (err) {}
+        }
+        $done({ body: bodyStr });
+    }
+} else if (url.indexOf("revenuecat.com") !== -1 || url.indexOf("rc-backup.com") !== -1) {
+
     obj.Attention = "Chúc mừng bạn! Cấu hình bởi dth206 (TikTok: @dth206)";
     var FAR_FUTURE = "9999-05-03T10:10:14Z";
     var PAST = "2006-05-03T10:10:14Z";
@@ -72,6 +112,12 @@ if (url.indexOf("revenuecat.com") !== -1 || url.indexOf("rc-backup.com") !== -1)
             app_icon_picker: "enabled",
             camera_roll: "enabled",
             camera_theme: "enabled",
+            camera_roll_video: "enabled",
+            camera_filters: "enabled",
+            camera_filter: "enabled",
+            custom_filters: "enabled",
+            ai_camera: "enabled",
+            ai_filters: "enabled",
             locket_views: "enabled",
             long_captions: "enabled",
             longer_video: "enabled",
@@ -124,7 +170,12 @@ if (url.indexOf("revenuecat.com") !== -1 || url.indexOf("rc-backup.com") !== -1)
             use_local_time_zone: true
         }),
         android_subscribe_gold_button_enabled: "false",
-        profile_badge_visible: "true",
+                profile_badge_visible: "true",
+        profile_badge: "enabled",
+        badge_tier: "gold",
+        badge: "gold",
+        has_badge: "true",
+        is_gold: "true",
         lunar_new_year_app_icon_enabled: "true",
         settings_instagram_url: "https://www.tiktok.com/@dth206",
         settings_tiktok_url: "https://www.tiktok.com/@dth206"
@@ -169,7 +220,7 @@ if (url.indexOf("revenuecat.com") !== -1 || url.indexOf("rc-backup.com") !== -1)
             volumeButton: true,
             flash_button: true,
             telephoto: true,
-            quality_mbps: 0.9,
+            quality_mbps: 2.5,
             qualityMbps: 0.9
         }),
         camera_roll: JSON.stringify({
@@ -182,9 +233,17 @@ if (url.indexOf("revenuecat.com") !== -1 || url.indexOf("rc-backup.com") !== -1)
             trim_max_duration: 60.0,
             trimMaxDuration: 60.0,
             camera_roll_max_duration: 60.0,
-            quality_mbps: 0.9,
+            quality_mbps: 2.5,
             qualityMbps: 0.9,
             flash_button: true
+        }),
+                camera_video_recording: JSON.stringify({
+            default: { maximum_duration: 30000, size: 1080, file_type: "mp4", video_codec: "h265" },
+            gold: { maximum_duration: 60000, size: 1080, file_type: "mp4", video_codec: "h265" }
+        }),
+        android_camera_video_recording: JSON.stringify({
+            default: { maximum_duration: 30000, size: 1080, file_type: "mp4", video_codec: "h265" },
+            gold: { maximum_duration: 60000, size: 1080, file_type: "mp4", video_codec: "h265" }
         }),
         live_photos: JSON.stringify({
             capture: true,
@@ -236,16 +295,16 @@ if (url.indexOf("revenuecat.com") !== -1 || url.indexOf("rc-backup.com") !== -1)
         trim_max_duration: "60.0",
         gold_max_duration: "60.0",
         goldMaxDuration: "60.0",
-        video_quality_mbps: "0.9",
+        video_quality_mbps: "2.5",
         video_sound_enabled: "true",
         microphone_enabled: "true",
         camera_microphone_enabled: "true",
         zoom_enabled: "true",
         upload_main: "true",
         upload_main_image_quality: "1.0",
-        upload_main_image_size: "1440",
+        upload_main_image_size: "2560",
         upload_thumbnail_image_quality: "1.0",
-        upload_thumbnail_image_size: "1020"
+        upload_thumbnail_image_size: "2048"
     });
 
     // ============================================================
@@ -473,6 +532,12 @@ if (url.indexOf("revenuecat.com") !== -1 || url.indexOf("rc-backup.com") !== -1)
             {
                 section: "👑 DTH206 VIP EXCLUSIVE",
                 items: [
+                    { overlay_id: "caption:tin_nong_news", source: "remote", caption: { background: { colors: ["#800000", "#C70039", "#FF1E56"] }, icon: { type: "image", data: "https://img.icons8.com/fluency/96/news.png", source: "url" }, max_lines: 1, text: "BẢN TIN 24/7 🚨", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:em_oi_chuyen_do", source: "remote", caption: { background: { colors: ["#2C0B4D", "#6A0572", "#AB83A1"] }, icon: { data: "https://img.icons8.com/color/96/mute.png", source: "url", type: "image" }, max_lines: 1, text: "Em ơi cái chuyện đó... 🫣", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:tau_moi_may_ra_ngoai", source: "remote", caption: { background: { colors: ["#111111", "#8B0000", "#E50914"] }, icon: { data: "https://img.icons8.com/color/96/door-opened.png", source: "url", type: "image" }, max_lines: 1, text: "Tau mời mày ra ngoài 👉🚪", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:may_toan_noi_oi_doi_oi", source: "remote", caption: { background: { colors: ["#E65100", "#FF8F00", "#FFC107"] }, icon: { data: "https://img.icons8.com/fluency/96/clown.png", source: "url", type: "image" }, max_lines: 1, text: "Mầy toàn nói mấy câu ới dời ơi 🤦‍♂️", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:dth206_da_noi_the", source: "remote", caption: { background: { colors: ["#241C10", "#8C6D23", "#D4AF37", "#F6E07A"] }, icon: { data: "https://img.icons8.com/fluency/96/crown.png", source: "url", type: "image" }, max_lines: 1, text: "dth206 đã nói thế thì ok đi em 👑", text_color: "#1A1A1A", type: "static_content" } },
+                    { overlay_id: "caption:hoi", source: "remote", caption: { background: { colors: ["#FF758F", "#FFB3C1", "#FFF0F3"] }, icon: { data: "🐷", type: "emoji" }, max_lines: 1, text: "Hợi 🐷", text_color: "#590D22", type: "static_content" } },
                     { overlay_id: "caption:dth206", source: "remote", caption: { background: { colors: ["#B8E7FF", "#A8F5D0", "#DCCBFF"] }, icon: { data: "crown.fill", type: "sf_symbol", color: "#183153" }, max_lines: 1, text: "dth206 👑", text_color: "#183153", type: "static_content" } },
                     { overlay_id: "caption:dth206", source: "remote", caption: { background: { colors: ["#FFE0A0", "#F59E0B", "#B45309"] }, icon: { data: "sparkles", type: "sf_symbol", color: "#FFFFFF" }, max_lines: 1, text: "TikTok: @dth206 ✨", text_color: "#FFFFFF", type: "static_content" } },
                     { overlay_id: "caption:cu", source: "remote", caption: { background: { colors: ["#FFD6A5", "#FFF1A8", "#FFC4D6"] }, max_lines: 1, text: "Cu 🐎", text_color: "#633B24", type: "static_content" } },
