@@ -35,6 +35,10 @@ if (!obj || typeof obj !== "object" || Array.isArray(obj)) {
             custom_filters: "enabled",
             ai_camera: "enabled",
             ai_filters: "enabled",
+            ai_appearance: "enabled",
+            ai_styles: "enabled",
+            generative_ai: "enabled",
+            magic_editor: "enabled",
             locket_views: "enabled",
             long_captions: "enabled",
             longer_video: "enabled",
@@ -54,7 +58,15 @@ if (!obj || typeof obj !== "object" || Array.isArray(obj)) {
             remove_ads: true,
             custom_widget_frames: true,
             camera_filters: true,
-            profile_badge: true
+            camera_filter: true,
+            custom_filters: true,
+            profile_badge: true,
+            ai_camera: true,
+            ai_filters: true,
+            ai_appearance: true,
+            ai_styles: true,
+            generative_ai: true,
+            magic_editor: true
         }),
         paywall_presentation_config: JSON.stringify({
             uid: "paywall_testflight",
@@ -89,7 +101,33 @@ if (!obj || typeof obj !== "object" || Array.isArray(obj)) {
         badge: "gold",
         has_badge: "true",
         is_gold: "true",
-        lunar_new_year_app_icon_enabled: "true"
+        lunar_new_year_app_icon_enabled: "true",
+        camera_filter: "true",
+        camera_filters_enabled: "true",
+        camera_filter_enabled: "true",
+        camera_filter_sheet_enabled: "true",
+        camera_filter_button_enabled: "true",
+        custom_filters_enabled: "true",
+        allows_custom_filters: "true",
+        show_filter_button: "true",
+        ai_appearance: "enabled",
+        ai_appearance_enabled: "true",
+        ai_styles: "enabled",
+        ai_styles_enabled: "true",
+        ai_camera: "enabled",
+        ai_camera_enabled: "true",
+        ai_filters_enabled: "true",
+        generative_ai: "enabled",
+        generative_ai_enabled: "true",
+        magic_editor: "enabled",
+        magic_editor_enabled: "true",
+        magic_editor_button_enabled: "true",
+        capture_classification_config: JSON.stringify({
+            detection: true,
+            debug_caption: false,
+            expanded_sheet_legacy_support: true,
+            display_reaction_suggestions: true
+        })
     });
 
     // ============================================================
@@ -168,20 +206,39 @@ if (!obj || typeof obj !== "object" || Array.isArray(obj)) {
             sheet_enabled: true,
             open_sheet_immediately: true,
             sheet_filters: [
-                { title: { en: "Biến hình AI", vi: "Biến hình AI", vn: "Biến hình AI" }, filter_ids: ["looks_maxxing", "influencer", "okay_wig", "toothless", "bye_brows"] },
-                { title: { en: "Tóc & Râu AI", vi: "Tóc & Râu AI", vn: "Tóc & Râu AI" }, filter_ids: ["beard", "blonde_bleached", "bob_cut", "buns", "tatted", "mohawk", "braces", "bowling_ball"] },
-                { title: { en: "Trang phục AI", vi: "Trang phục AI", vn: "Trang phục AI" }, filter_ids: ["wedding", "cowboy_cowgirl", "giraffe", "clown"] },
-                { title: { en: "Đáng yêu", vi: "Đáng yêu", vn: "Đáng yêu" }, filter_ids: ["cutesy", "sticker_face", "flower_crown", "love_bug"] },
-                { title: { en: "Tiệc tùng", vi: "Tiệc tùng", vn: "Tiệc tùng" }, filter_ids: ["princess", "disco_lights", "cash_money", "happy_birthday", "slimed"] },
-                { title: { en: "Lễ hội", vi: "Lễ hội", vn: "Lễ hội" }, filter_ids: ["santa_cutout", "elf_cutout", "frosty", "sweet_hearts", "lucky_face", "bearded", "leprechaun", "easter_bunney_cutout", "easter_chick_cutout"] }
+                {
+                    title: { en: "Looks", vi: "Tóc & Râu AI", vn: "Tóc & Râu AI" },
+                    filter_ids: ["looks_maxxing", "bowling_ball", "blonde_bleached", "beard", "bob_cut", "buns", "tatted", "mohawk", "braces", "bye_brows"]
+                },
+                {
+                    title: { en: "Goofy", vi: "Biến hình AI", vn: "Biến hình AI" },
+                    filter_ids: ["looks_maxxing", "okay_wig", "influencer", "toothless", "bye_brows"]
+                },
+                {
+                    title: { en: "Costumes", vi: "Trang phục AI", vn: "Trang phục AI" },
+                    filter_ids: ["wedding", "cowboy_cowgirl", "giraffe", "clown"]
+                },
+                {
+                    title: { en: "Cute", vi: "Đáng yêu", vn: "Đáng yêu" },
+                    filter_ids: ["cutesy", "sticker_face", "flower_crown", "love_bug"]
+                },
+                {
+                    title: { en: "Celebrate", vi: "Tiệc tùng", vn: "Tiệc tùng" },
+                    filter_ids: ["princess", "disco_lights", "cash_money", "happy_birthday", "slimed"]
+                },
+                {
+                    title: { en: "Holidays", vi: "Lễ hội", vn: "Lễ hội" },
+                    filter_ids: ["easter_bunney_cutout", "easter_chick_cutout", "bearded", "leprechaun", "lucky_face", "sweet_hearts", "elf_cutout", "santa_cutout", "frosty"]
+                }
             ],
             picker_filters: [
                 "looks_maxxing", "influencer", "okay_wig", "toothless", "bye_brows",
-                "beard", "blonde_bleached", "bob_cut", "buns", "tatted", "mohawk", "braces", "bowling_ball",
-                "wedding", "cowboy_cowgirl", "giraffe", "clown",
+                "bowling_ball", "blonde_bleached", "beard", "bob_cut", "buns",
+                "tatted", "mohawk", "braces", "wedding", "cowboy_cowgirl", "giraffe", "clown",
                 "cutesy", "sticker_face", "flower_crown", "love_bug",
                 "princess", "disco_lights", "cash_money", "happy_birthday", "slimed",
-                "santa_cutout", "elf_cutout", "frosty", "sweet_hearts", "lucky_face", "bearded", "leprechaun", "easter_bunney_cutout", "easter_chick_cutout"
+                "easter_bunney_cutout", "easter_chick_cutout", "bearded", "leprechaun",
+                "lucky_face", "sweet_hearts", "elf_cutout", "santa_cutout", "frosty"
             ]
         }),
         camera_roll_preview_enabled: "true",
@@ -349,6 +406,7 @@ if (!obj || typeof obj !== "object" || Array.isArray(obj)) {
         cdn_domain_replacements_video: "true",
         storage_bucket: "gs://locket-img",
         storage_bucket_video: "gs://locket-video",
+        storage_bucket_filters: "gs://locket-filters",
         image_cache_max_age_sec: "157680000",
         image_cache_max_size: "400000000",
         history_cache_age_days: "1000",
