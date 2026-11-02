@@ -9,17 +9,17 @@
 
 [Script]
 # 1. Kích hoạt Locket Gold VIP (RevenueCat)
-dth_revenuecat = type=http-response, pattern=^https:\/\/api\.(revenuecat|rc-backup)\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_locket_gold.js, requires-body=true, max-size=-1, timeout=60
+dth_revenuecat = type=http-response, pattern=^https:\/\/api\.(revenuecat|rc-backup)\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_gold.js?v=3.0, requires-body=true, max-size=-1, timeout=60
 
 # 2. Xóa header ETag tránh lưu cache cũ
-dth_deleteHeader = type=http-request, pattern=^https:\/\/api\.(revenuecat|rc-backup)\.com\/.+\/(receipts|subscribers), script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_del_header.js, timeout=60
+dth_deleteHeader = type=http-request, pattern=^https:\/\/api\.(revenuecat|rc-backup)\.com\/.+\/(receipts|subscribers), script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_del_header.js?v=3.0, timeout=60
 
 # 3. Kích hoạt Video 60s, Khung Shin-chan, 260+ Captions, Bộ lọc biến hình AI (Hỗ trợ cả locket-4252a & locket-camera)
-dth_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/(locket-4252a|locket-camera)\/.+, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth.js, requires-body=true, max-size=-1, timeout=60
+dth_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/(locket-4252a|locket-camera)\/.+, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_unlocked.js?v=3.0, requires-body=true, max-size=-1, timeout=60
 
 # 4. Giữ Huy hiệu Gold luôn BẬT trên Trang Cá Nhân (Profile & Badge)
-dth_badge = type=http-request, pattern=^https:\/\/api\.locketcamera\.com\/changeProfileInfo, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_profile.js, timeout=60
-dth_user = type=http-response, pattern=^https:\/\/api\.locketcamera\.com\/.+, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_profile.js, requires-body=true, max-size=-1, timeout=60
+dth_badge = type=http-request, pattern=^https:\/\/api\.locketcamera\.com\/changeProfileInfo, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_profile.js?v=3.0, timeout=60
+dth_user = type=http-response, pattern=^https:\/\/api\.locketcamera\.com\/.+, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_profile.js?v=3.0, requires-body=true, max-size=-1, timeout=60
 
 [MITM]
 hostname = %APPEND% api.revenuecat.com, api.rc-backup.com, firebaseremoteconfig.googleapis.com, api.locketcamera.com
