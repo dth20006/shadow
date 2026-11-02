@@ -1,0 +1,24 @@
+﻿# Binaries & Large archives
+*.exe
+*.msi
+*.zip
+*.tar.gz
+*.7z
+*.mp4
+*.avi
+*.mkv
+
+# Software installations & cache
+TikTok LIVE Studio/
+TLauncher/
+3utool/
+3uTools9/
+temp_repos/
+__pycache__/
+*.py[cod]
+.venv/
+env/
+
+# IDE / Editor
+.vscode/
+.idea/
