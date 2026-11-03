@@ -1,6 +1,12 @@
-// dth206 - Locket Gold Full All-In-One (v8.1)
+// dth206 - Locket Gold Full All-In-One (v8.2)
 // Dong bo va toi uu dua tren kien truc dth206 chuan hoa toan dien bo loc AI va video 60s
 // Ban quyen thuoc ve dth206 | https://github.com/dth20006/shadow
+
+// ==========================================
+// CẤU HÌNH SỐ LƯỢNG AI CREDITS (TÙY CHỈNH THEO Ý MUỐN)
+// ==========================================
+var DTH_AI_CREDITS = "999999";
+
 (function () {
   "use strict";
   var PATCH = {
@@ -20,7 +26,7 @@
         }
       ],
       "primary_button_title": "Bắt đầu trải nghiệm",
-      "campaign": "dth206_gold_welcome_v8.1",
+      "campaign": "dth206_gold_welcome_v8.2",
       "start_at": "2020-01-01T00:00:00",
       "end_at": "2099-12-31T23:59:59",
       "use_local_time_zone": true
@@ -31,9 +37,9 @@
     "ai_looks_maxxing_enabled": "true",
     "ai_generation_enabled": "true",
     "ai_effects_enabled": "true",
-    "ai_quota": "999999",
-    "ai_credits": "999999",
-    "max_ai_generations": "999999",
+    "ai_quota": String(DTH_AI_CREDITS),
+    "ai_credits": String(DTH_AI_CREDITS),
+    "max_ai_generations": String(DTH_AI_CREDITS),
     "enable_ai_magic_editor": "true",
     "ai_appearance_enabled": "true",
     "ai_outfits_enabled": "true",
@@ -255,9 +261,9 @@
       "ai_looks_maxxing_enabled": "true",
       "ai_generation_enabled": "true",
       "ai_effects_enabled": "true",
-      "ai_quota": "999999",
-      "ai_credits": "999999",
-      "max_ai_generations": "999999",
+      "ai_quota": String(DTH_AI_CREDITS),
+      "ai_credits": String(DTH_AI_CREDITS),
+      "max_ai_generations": String(DTH_AI_CREDITS),
       "enable_ai_magic_editor": "true",
       "ai_appearance_enabled": "true",
       "ai_outfits_enabled": "true",

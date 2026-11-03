@@ -9,6 +9,11 @@
  *     tất cả đối tượng Profile / User / Data của api.locketcamera.com
  ****************************************************************/
 
+// ==========================================
+// CẤU HÌNH SỐ LƯỢNG AI CREDITS (TÙY CHỈNH THEO Ý MUỐN)
+// ==========================================
+var DTH_AI_CREDITS = 999999;
+
 (function () {
   "use strict";
 
@@ -28,8 +33,8 @@
           can_use_ai: true,
           has_ai_access: true,
           ai_enabled: true,
-          ai_credits: 999999,
-          ai_quota: 999999,
+          ai_credits: DTH_AI_CREDITS,
+          ai_quota: DTH_AI_CREDITS,
           success: true
         },
         result: {
@@ -40,8 +45,8 @@
           can_use_ai: true,
           has_ai_access: true,
           ai_enabled: true,
-          ai_credits: 999999,
-          ai_quota: 999999,
+          ai_credits: DTH_AI_CREDITS,
+          ai_quota: DTH_AI_CREDITS,
           success: true
         },
         success: true
@@ -104,8 +109,8 @@
           node.can_use_ai = true;
           node.has_ai_access = true;
           node.ai_enabled = true;
-          node.ai_credits = 999999;
-          node.ai_quota = 999999;
+          node.ai_credits = DTH_AI_CREDITS;
+          node.ai_quota = DTH_AI_CREDITS;
         }
 
         for (var k in node) {
