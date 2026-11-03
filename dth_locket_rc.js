@@ -80,16 +80,10 @@ if (!obj || typeof obj !== "object" || Array.isArray(obj)) {
             tag: "👑 LOCKET GOLD • DTH206",
             tag_gradient: true,
             tag_style: "gold_gradient",
-            title: "Locket Gold của DTH206 👑",
-            feature_set: [
-                {
-                    title: "Mở khóa thành công! ✨",
-                    body: "Cấu hình Locket Gold All-In-One bởi dth206 💛",
-                    imageURL: "https://i.ibb.co/d0FDT94k/tu-t.jpg"
-                }
-            ],
+            title: "Locket Gold của DTH206 💛",
+            feature_set: [],
             primary_button_title: "Xong",
-            campaign: "locket_gold_welcome_v3",
+            campaign: "locket_gold_welcome_v5",
             start_at: "2020-01-01T00:00:00",
             end_at: "2099-12-31T23:59:59",
             use_local_time_zone: true
@@ -204,35 +198,35 @@ if (!obj || typeof obj !== "object" || Array.isArray(obj)) {
             allows_custom_filters: true,
             show_filter_button: true,
             sheet_enabled: true,
-            open_sheet_immediately: true,
+            open_sheet_immediately: false,
             sheet_filters: [
                 {
-                    title: { en: "Looks", vi: "Tóc & Râu AI", vn: "Tóc & Râu AI" },
+                    title: { en: "Goofy" },
+                    filter_ids: ["okay_wig", "influencer", "looks_maxxing", "toothless", "bye_brows"]
+                },
+                {
+                    title: { en: "Looks" },
                     filter_ids: ["looks_maxxing", "bowling_ball", "blonde_bleached", "beard", "bob_cut", "buns", "tatted", "mohawk", "braces", "bye_brows"]
                 },
                 {
-                    title: { en: "Goofy", vi: "Biến hình AI", vn: "Biến hình AI" },
-                    filter_ids: ["looks_maxxing", "okay_wig", "influencer", "toothless", "bye_brows"]
-                },
-                {
-                    title: { en: "Costumes", vi: "Trang phục AI", vn: "Trang phục AI" },
+                    title: { en: "Costumes" },
                     filter_ids: ["wedding", "cowboy_cowgirl", "giraffe", "clown"]
                 },
                 {
-                    title: { en: "Cute", vi: "Đáng yêu", vn: "Đáng yêu" },
+                    title: { en: "Cute" },
                     filter_ids: ["cutesy", "sticker_face", "flower_crown", "love_bug"]
                 },
                 {
-                    title: { en: "Celebrate", vi: "Tiệc tùng", vn: "Tiệc tùng" },
-                    filter_ids: ["princess", "disco_lights", "cash_money", "happy_birthday", "slimed"]
+                    title: { en: "Celebrate" },
+                    filter_ids: ["slimed", "princess", "disco_lights", "cash_money", "happy_birthday"]
                 },
                 {
-                    title: { en: "Holidays", vi: "Lễ hội", vn: "Lễ hội" },
+                    title: { en: "Holidays" },
                     filter_ids: ["easter_bunney_cutout", "easter_chick_cutout", "bearded", "leprechaun", "lucky_face", "sweet_hearts", "elf_cutout", "santa_cutout", "frosty"]
                 }
             ],
             picker_filters: [
-                "looks_maxxing", "influencer", "okay_wig", "toothless", "bye_brows",
+                "okay_wig", "influencer", "looks_maxxing", "toothless", "bye_brows",
                 "bowling_ball", "blonde_bleached", "beard", "bob_cut", "buns",
                 "tatted", "mohawk", "braces", "wedding", "cowboy_cowgirl", "giraffe", "clown",
                 "cutesy", "sticker_face", "flower_crown", "love_bug",
@@ -263,7 +257,7 @@ if (!obj || typeof obj !== "object" || Array.isArray(obj)) {
         zoom_enabled: "true",
         photo_quality_balance: "quality",
         android_photo_quality_balance: "quality",
-        upload_main: "true",
+        upload_main: "false",
         upload_main_image_quality: "1.0", // 100% chất lượng ảnh gốc
         upload_main_image_size: "2560",    // Nâng lên chuẩn 2K
         upload_thumbnail_image_quality: "1.0",
