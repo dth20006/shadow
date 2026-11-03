@@ -1,4 +1,4 @@
-﻿# Binaries & Large archives
+# Binaries & Large archives
 *.exe
 *.msi
 *.zip
@@ -14,6 +14,7 @@ TLauncher/
 3utool/
 3uTools9/
 temp_repos/
+temp_vinh/
 __pycache__/
 *.py[cod]
 .venv/
@@ -22,3 +23,28 @@ env/
 # IDE / Editor
 .vscode/
 .idea/
+
+# Local personal workspace projects & logs
+.agents/
+AGENTS.md
+GEMINI.md
+chidao/
+biodth/
+gop3web/
+locket1/
+logo/
+muathe/
+sukienchungsuc/
+testweb/
+thongbao/
+thongbaozalo/
+tool addfr/
+tool thong bao ve zalo/
+UpLocket-main/
+*.mobileconfig
+*.txt
+*.3105
+*.svg
+photo_*.jpg
+800924822_*.jpg
+Aura_Lookbook_*.png

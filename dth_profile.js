@@ -1,64 +1,111 @@
-/***********************************************
-> dth - Locket Profile & Gold Badge Keeper
-> Author: dth206
-> Repository: https://github.com/dth20006/shadow
-> Chức năng: Kích hoạt & duy trì huy hiệu Locket Gold vĩnh viễn trên trang cá nhân
-***********************************************/
-const url = $request ? $request.url : '';
+/****************************************************************
+ * 👑 Locket Gold Profile & Badge Synchronizer
+ * --------------------------------------------------------------
+ * Tác giả: dth206
+ * Repository: https://github.com/dth20006/shadow
+ * Chức năng:
+ *  1. Giả lập thành công HTTP Request đổi thông tin & huy hiệu (changeProfileInfo)
+ *  2. Tự động đồng bộ và inject huy hiệu Locket Gold vĩnh viễn vào
+ *     tất cả đối tượng Profile / User / Data của api.locketcamera.com
+ ****************************************************************/
 
-function injectBadge(obj) {
-    if (!obj || typeof obj !== 'object') return;
+(function () {
+  "use strict";
 
-    if ('badge' in obj || 'badge_tier' in obj || 'is_gold' in obj || 'user_name' in obj || 'phone_number' in obj) {
-        obj.badge = "locket_gold";
-        obj.badge_tier = "gold";
-        obj.is_gold = true;
-        obj.has_badge = true;
-    }
+  try {
+    var req = typeof $request === "object" && $request !== null ? $request : null;
+    var resp = typeof $response === "object" && $response !== null ? $response : null;
+    var url = req && req.url ? String(req.url) : "";
 
-    for (let key in obj) {
-        if (Object.prototype.hasOwnProperty.call(obj, key) && typeof obj[key] === 'object' && obj[key] !== null) {
-            injectBadge(obj[key]);
-        }
-    }
-}
+    // 1. Xử lý HTTP Request: Mock thành công khi app gọi changeProfileInfo
+    if (/^https:\/\/api\.locketcamera\.com\/changeProfileInfo/i.test(url) || (url.indexOf("changeProfileInfo") !== -1 && !resp)) {
+      var mockData = {
+        data: {
+          badge: "gold",
+          badge_tier: "gold",
+          is_gold: true,
+          has_badge: true,
+          success: true
+        },
+        result: {
+          badge: "gold",
+          badge_tier: "gold",
+          is_gold: true,
+          has_badge: true,
+          success: true
+        },
+        success: true
+      };
 
-// 1. Khi app gửi request đổi thông tin cá nhân (changeProfileInfo)
-if (url.includes("changeProfileInfo")) {
-    $done({
+      return $done({
         response: {
-            status: 200,
-            headers: {
-                "Content-Type": "application/json; charset=utf-8",
-                "Access-Control-Allow-Origin": "*"
-            },
-            body: JSON.stringify({
-                data: {
-                    badge: "locket_gold",
-                    badge_tier: "gold",
-                    is_gold: true,
-                    has_badge: true,
-                    success: true
-                },
-                result: {
-                    badge: "locket_gold",
-                    badge_tier: "gold",
-                    is_gold: true,
-                    has_badge: true,
-                    success: true
-                }
-            })
+          status: 200,
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            "Access-Control-Allow-Origin": "*"
+          },
+          body: JSON.stringify(mockData)
         }
-    });
-} else {
-    // 2. Chặn các response lấy profile / user info từ api.locketcamera.com
-    let body = $response ? $response.body : null;
-    if (body) {
-        try {
-            let obj = JSON.parse(body);
-            injectBadge(obj);
-            body = JSON.stringify(obj);
-        } catch (e) {}
+      });
     }
-    $done({ body: body });
-}
+
+    // 2. Xử lý HTTP Response: Đệ quy inject huy hiệu Gold vào user/profile/data
+    if (resp && resp.body) {
+      var raw = resp.body;
+      var dataObj = typeof raw === "string" ? JSON.parse(raw) : raw;
+
+      function injectGoldBadge(node, parentKey) {
+        if (!node || typeof node !== "object") return;
+
+        if (Array.isArray(node)) {
+          for (var i = 0; i < node.length; i++) {
+            injectGoldBadge(node[i], parentKey);
+          }
+          return;
+        }
+
+        var keyStr = (parentKey || "").toLowerCase();
+        var isTarget = (
+          keyStr === "data" ||
+          keyStr === "user" ||
+          keyStr === "profile" ||
+          keyStr === "users" ||
+          keyStr === "profiles" ||
+          keyStr === "account" ||
+          keyStr === "member" ||
+          keyStr === "friend" ||
+          keyStr === "friends" ||
+          "badge" in node ||
+          "badge_tier" in node ||
+          "is_gold" in node ||
+          "has_badge" in node ||
+          "uid" in node ||
+          "user_id" in node ||
+          "username" in node ||
+          "user_name" in node ||
+          "phone_number" in node
+        );
+
+        if (isTarget) {
+          node.badge = "gold";
+          node.badge_tier = "gold";
+          node.is_gold = true;
+          node.has_badge = true;
+        }
+
+        for (var k in node) {
+          if (Object.prototype.hasOwnProperty.call(node, k) && typeof node[k] === "object" && node[k] !== null) {
+            injectGoldBadge(node[k], k);
+          }
+        }
+      }
+
+      injectGoldBadge(dataObj, "");
+      return $done({ body: JSON.stringify(dataObj) });
+    }
+
+    return $done({});
+  } catch (err) {
+    return $done({});
+  }
+})();

@@ -87,6 +87,7 @@ https://raw.githubusercontent.com/dth20006/shadow/main/dth.conf
 | `dth_del_header.js` | Script xóa ETag & gán Header US để tránh cache 304 |
 | `dth_rc_request.js` | Script tối ưu request Firebase Remote Config để nhận full data |
 | `dth_unlocked.js` | Script mở khóa 60s video, 280+ caption, khung ảnh & AI filters |
+| `dth_profile.js` | Script đồng bộ Profile & huy hiệu Locket Gold trên api.locketcamera.com |
 
 ---
 **Phát triển bởi dth206** • Repository: [https://github.com/dth20006/shadow](https://github.com/dth20006/shadow)
