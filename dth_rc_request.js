@@ -1,11 +1,7 @@
-/***********************************************
-> dth - Firebase Remote Config Request Optimizer
-> Author: dth206
-> Repository: https://github.com/dth20006/shadow
-***********************************************/
+// dth206 - Firebase Remote Config Request Optimizer
+// Ban quyen thuoc ve dth206 | https://github.com/dth20006/shadow
 (function () {
   "use strict";
-
   try {
     var req = typeof $request === "object" ? $request : {};
     var url = String(req.url || "");

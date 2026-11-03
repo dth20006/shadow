@@ -1,30 +1,26 @@
-/***********************************************
-> dth - RevenueCat Header Cleaner & US Geo Spoof
-> Author: dth206
-> Repository: https://github.com/dth20006/shadow
-***********************************************/
+// dth206 - RevenueCat Request Header Optimizer
+// Ban quyen thuoc ve dth206 | https://github.com/dth20006/shadow
 (function () {
   "use strict";
   try {
-    var req = typeof $request === "object" ? $request : {};
-    var headers = Object.assign({}, req.headers || {});
+    var request = typeof $request === "object" ? $request : {};
+    var headers = request.headers || {};
     var keys = Object.keys(headers);
+    var ua = "";
     for (var i = 0; i < keys.length; i++) {
-      var k = keys[i].toLowerCase();
-      if (k === "x-revenuecat-etag" || k === "if-none-match") {
-        delete headers[keys[i]];
-      }
+      if (keys[i].toLowerCase() === "user-agent") ua = String(headers[keys[i]]);
     }
-
-    headers["X-Forwarded-For"] = "8.8.8.8";
-    headers["CF-Connecting-IP"] = "8.8.8.8";
-    headers["True-Client-IP"] = "8.8.8.8";
-    headers["Fastly-Client-IP"] = "8.8.8.8";
-    headers["X-Real-IP"] = "8.8.8.8";
-    headers["CF-IPCountry"] = "US";
-
-    return $done({ headers: headers });
-  } catch (e) {
+    if (!/Locket/i.test(ua) ||
+        !/^https:\/\/api\.revenuecat\.com\/v1\/(?:receipts|subscribers\/[^/?]+)\/?(?:\?.*)?$/.test(String(request.url || ""))) {
+      return $done({});
+    }
+    var output = Object.assign({}, headers);
+    for (var j = 0; j < keys.length; j++) {
+      var k = keys[j].toLowerCase();
+      if (k === "x-revenuecat-etag" || k === "if-none-match") delete output[keys[j]];
+    }
+    return $done({ headers: output });
+  } catch (error) {
     return $done({});
   }
 })();

@@ -1,103 +1,80 @@
-/***********************************************
-> dth - Locket Gold Activator (RevenueCat)
-> Author: dth206
-> Repository: https://github.com/dth20006/shadow
-> Chức năng: Mở khóa gói Locket Gold vĩnh viễn (9999)
-***********************************************/
+// dth206 - Locket Gold VIP Activator (RevenueCat)
+// Ban quyen thuoc ve dth206 | https://github.com/dth20006/shadow
 (function () {
   "use strict";
+
+  var SETTINGS = {
+    goldSince: "2005-11-01T00:00:00+07:00",
+    goldUntil: "2099-12-31T23:59:59+07:00"
+  };
+
+  function header(headers, name) {
+    var keys = Object.keys(headers || {});
+    for (var i = 0; i < keys.length; i++) {
+      if (keys[i].toLowerCase() === name.toLowerCase()) return String(headers[keys[i]]);
+    }
+    return "";
+  }
+  function record(value) {
+    return value !== null && typeof value === "object" && !Array.isArray(value);
+  }
+
   try {
-    if (typeof $response === "undefined" || !$response || typeof $response.body !== "string") {
+    var request = typeof $request === "object" ? $request : {};
+    var url = String(request.url || "");
+    var ua = header(request.headers, "user-agent");
+    if (!/Locket/i.test(ua) ||
+        !/^https:\/\/api\.revenuecat\.com\/v1\/(?:receipts|subscribers\/[^/?]+)\/?(?:\?.*)?$/.test(url)) {
       return $done({});
     }
+    if (typeof $response !== "object" || typeof $response.body !== "string") return $done({});
+    var payload = JSON.parse($response.body);
+    if (!record(payload) || !record(payload.subscriber)) return $done({});
+    var subscriber = payload.subscriber;
+    if ((subscriber.subscriptions !== undefined && !record(subscriber.subscriptions)) ||
+        (subscriber.entitlements !== undefined && !record(subscriber.entitlements))) return $done({});
 
-    var obj;
-    try {
-      obj = JSON.parse($response.body);
-    } catch (e) {
-      return $done({});
-    }
+    var start = new Date(SETTINGS.goldSince);
+    var end = new Date(SETTINGS.goldUntil);
+    if (!isFinite(start.getTime()) || !isFinite(end.getTime()) || end <= start) return $done({});
+    var since = start.toISOString();
+    var until = end.toISOString();
+    subscriber.subscriptions = subscriber.subscriptions || {};
+    subscriber.entitlements = subscriber.entitlements || {};
 
-    if (!obj || typeof obj !== "object" || Array.isArray(obj)) {
-      return $done({});
-    }
+    var tiers = [
+      { product: "locket_1600_1y", entitlement: "Gold" },
+      { product: "com.locket02.premium.yearly", entitlement: "pro" }
+    ];
 
-    obj.Attention = "👑 Locket Gold VIP - Kích hoạt thành công bởi dth206!";
-    var purchaseDate = "2020-01-01T10:10:14Z";
-    var expiresDate = "9999-12-31T23:59:59Z";
+    tiers.forEach(function (t) {
+      var oldSub = subscriber.subscriptions[t.product];
+      subscriber.subscriptions[t.product] = Object.assign({}, record(oldSub) ? oldSub : {}, {
+        auto_resume_date: null,
+        billing_issues_detected_at: null,
+        expires_date: until,
+        grace_period_expires_date: null,
+        is_sandbox: true,
+        original_purchase_date: since,
+        ownership_type: "PURCHASED",
+        period_type: "normal",
+        purchase_date: since,
+        refunded_at: null,
+        store: "app_store",
+        unsubscribe_detected_at: null
+      });
 
-    var locketSub1 = {
-      auto_resume_date: null,
-      display_name: "locket_1600_1y",
-      is_sandbox: false,
-      ownership_type: "PURCHASED",
-      billing_issues_detected_at: null,
-      management_url: "https://apps.apple.com/account/subscriptions",
-      period_type: "normal",
-      price: {
-        amount: 399000.0,
-        currency: "VND"
-      },
-      expires_date: expiresDate,
-      grace_period_expires_date: null,
-      refunded_at: null,
-      unsubscribe_detected_at: null,
-      original_purchase_date: purchaseDate,
-      purchase_date: purchaseDate,
-      store: "app_store",
-      store_transaction_id: "2000001108724193"
-    };
-
-    var locketSub2 = Object.assign({}, locketSub1, {
-      display_name: "com.locket02.premium.yearly",
-      store_transaction_id: "2000001108724194"
+      var oldEnt = subscriber.entitlements[t.entitlement];
+      subscriber.entitlements[t.entitlement] = Object.assign({}, record(oldEnt) ? oldEnt : {}, {
+        product_identifier: t.product,
+        purchase_date: since,
+        expires_date: until,
+        grace_period_expires_date: null
+      });
     });
 
-    var entGold = {
-      grace_period_expires_date: null,
-      purchase_date: purchaseDate,
-      original_purchase_date: purchaseDate,
-      product_identifier: "locket_1600_1y",
-      expires_date: expiresDate,
-      ownership_type: "PURCHASED",
-      store: "app_store"
-    };
-
-    var entPro = {
-      grace_period_expires_date: null,
-      purchase_date: purchaseDate,
-      original_purchase_date: purchaseDate,
-      product_identifier: "com.locket02.premium.yearly",
-      expires_date: expiresDate,
-      ownership_type: "PURCHASED",
-      store: "app_store"
-    };
-
-    obj.subscriber = obj.subscriber || {};
-    obj.subscriber.first_seen = purchaseDate;
-    obj.subscriber.original_purchase_date = purchaseDate;
-    obj.subscriber.management_url = "https://apps.apple.com/account/subscriptions";
-    obj.subscriber.subscriptions = obj.subscriber.subscriptions || {};
-    obj.subscriber.entitlements = obj.subscriber.entitlements || {};
-    obj.subscriber.other_purchases = obj.subscriber.other_purchases || {};
-
-    // Kích hoạt tất cả các subscriptions & entitlements
-    obj.subscriber.subscriptions["locket_1600_1y"] = locketSub1;
-    obj.subscriber.subscriptions["com.locket02.premium.yearly"] = locketSub2;
-    obj.subscriber.subscriptions["locket_gold_yearly"] = locketSub1;
-    obj.subscriber.subscriptions["locket_gold"] = locketSub1;
-
-    obj.subscriber.entitlements["Gold"] = entGold;
-    obj.subscriber.entitlements["pro"] = entPro;
-    obj.subscriber.entitlements["vip"] = entGold;
-    obj.subscriber.entitlements["VIP"] = entGold;
-    obj.subscriber.entitlements["locket_gold"] = entGold;
-    obj.subscriber.entitlements["premium"] = entPro;
-    obj.subscriber.entitlements["camera_filters"] = entGold;
-    obj.subscriber.entitlements["holiday_effects"] = entGold;
-
-    return $done({ body: JSON.stringify(obj) });
-  } catch (err) {
+    return $done({ body: JSON.stringify(payload) });
+  } catch (error) {
     return $done({});
   }
 })();
