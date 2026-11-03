@@ -1,4 +1,4 @@
-// dth206 - Locket Gold Full All-In-One (v8.2)
+// dth206 - Locket Gold Full All-In-One (v9.0)
 // Dong bo va toi uu dua tren kien truc dth206 chuan hoa toan dien bo loc AI va video 60s
 // Ban quyen thuoc ve dth206 | https://github.com/dth20006/shadow
 
@@ -26,7 +26,7 @@ var DTH_AI_CREDITS = "999999";
         }
       ],
       "primary_button_title": "Bắt đầu trải nghiệm",
-      "campaign": "dth206_gold_welcome_v8.2",
+      "campaign": "dth206_gold_welcome_v9.0",
       "start_at": "2020-01-01T00:00:00",
       "end_at": "2099-12-31T23:59:59",
       "use_local_time_zone": true
