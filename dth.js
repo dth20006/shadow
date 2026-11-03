@@ -81,9 +81,15 @@ if (!obj || typeof obj !== "object" || Array.isArray(obj)) {
             tag_gradient: true,
             tag_style: "gold_gradient",
             title: "Locket Gold của DTH206 💛",
-            feature_set: [],
-            primary_button_title: "Xong",
-            campaign: "locket_gold_welcome_v5",
+            feature_set: [
+                {
+                    title: "Chào mừng bạn! ✨",
+                    body: "Cấu hình Locket Gold All-In-One bởi dth206 💛",
+                    imageURL: "https://raw.githubusercontent.com/dth20006/shadow/main/welcome.jpg"
+                }
+            ],
+            primary_button_title: "Bắt đầu trải nghiệm",
+            campaign: "locket_gold_welcome_v5_1",
             start_at: "2020-01-01T00:00:00",
             end_at: "2099-12-31T23:59:59",
             use_local_time_zone: true
