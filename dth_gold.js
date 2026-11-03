@@ -42,14 +42,22 @@
     subscriber.subscriptions = subscriber.subscriptions || {};
     subscriber.entitlements = subscriber.entitlements || {};
 
-    var tiers = [
-      { product: "locket_1600_1y", entitlement: "Gold" },
-      { product: "com.locket02.premium.yearly", entitlement: "pro" }
+    var products = [
+      "locket_1600_1y",
+      "com.locket02.premium.yearly"
     ];
 
-    tiers.forEach(function (t) {
-      var oldSub = subscriber.subscriptions[t.product];
-      subscriber.subscriptions[t.product] = Object.assign({}, record(oldSub) ? oldSub : {}, {
+    var entitlements = [
+      "Gold",
+      "gold",
+      "pro",
+      "ai_features",
+      "locket_gold"
+    ];
+
+    products.forEach(function (product) {
+      var oldSub = subscriber.subscriptions[product];
+      subscriber.subscriptions[product] = Object.assign({}, record(oldSub) ? oldSub : {}, {
         auto_resume_date: null,
         billing_issues_detected_at: null,
         expires_date: until,
@@ -63,10 +71,12 @@
         store: "app_store",
         unsubscribe_detected_at: null
       });
+    });
 
-      var oldEnt = subscriber.entitlements[t.entitlement];
-      subscriber.entitlements[t.entitlement] = Object.assign({}, record(oldEnt) ? oldEnt : {}, {
-        product_identifier: t.product,
+    entitlements.forEach(function (entitlement) {
+      var oldEnt = subscriber.entitlements[entitlement];
+      subscriber.entitlements[entitlement] = Object.assign({}, record(oldEnt) ? oldEnt : {}, {
+        product_identifier: "locket_1600_1y",
         purchase_date: since,
         expires_date: until,
         grace_period_expires_date: null

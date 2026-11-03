@@ -67,7 +67,10 @@
     obj.subscriber.subscriptions["com.locket02.premium.yearly"] = locketSub;
 
     obj.subscriber.entitlements["Gold"] = locketGold;
+    obj.subscriber.entitlements["gold"] = locketGold;
     obj.subscriber.entitlements["pro"] = locketGold;
+    obj.subscriber.entitlements["ai_features"] = locketGold;
+    obj.subscriber.entitlements["locket_gold"] = locketGold;
     obj.subscriber.entitlements["vip"] = locketGold;
 
     return $done({ body: JSON.stringify(obj) });

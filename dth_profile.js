@@ -25,6 +25,11 @@
           badge_tier: "gold",
           is_gold: true,
           has_badge: true,
+          can_use_ai: true,
+          has_ai_access: true,
+          ai_enabled: true,
+          ai_credits: 999999,
+          ai_quota: 999999,
           success: true
         },
         result: {
@@ -32,6 +37,11 @@
           badge_tier: "gold",
           is_gold: true,
           has_badge: true,
+          can_use_ai: true,
+          has_ai_access: true,
+          ai_enabled: true,
+          ai_credits: 999999,
+          ai_quota: 999999,
           success: true
         },
         success: true
@@ -91,6 +101,11 @@
           node.badge_tier = "gold";
           node.is_gold = true;
           node.has_badge = true;
+          node.can_use_ai = true;
+          node.has_ai_access = true;
+          node.ai_enabled = true;
+          node.ai_credits = 999999;
+          node.ai_quota = 999999;
         }
 
         for (var k in node) {
