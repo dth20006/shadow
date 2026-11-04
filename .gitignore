@@ -9,6 +9,8 @@
 *.mkv
 
 # Software installations & cache
+libimobiledevice/
+scoped_dir*/
 TikTok LIVE Studio/
 TLauncher/
 3utool/
