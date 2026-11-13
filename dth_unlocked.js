@@ -1,5 +1,5 @@
-// dth206 - Locket Gold Full All-In-One (v10.0)
-// Tích hợp 1,014 cờ Firebase Remote Config + 24 Khung Widget Hoàng Gia + Stickers VIP + 230+ Captions VIP
+// dth206 - Locket Gold Full All-In-One (v10.5 All-in-One Max)
+// Tích hợp 1,014+ cờ Firebase Remote Config + 24 Khung Widget Hoàng Gia + Stickers VIP + 330+ Captions VIP (100 GenZ) + 57 cờ v10.5 Max
 // Bản quyền thuộc về dth206 | https://github.com/dth20006/shadow
 
 // ==========================================
@@ -10,10 +10,10 @@ var DTH_AI_CREDITS = "999999";
 (function () {
   "use strict";
 
-  var V0 = "{\"photobooth\":\"enabled\",\"camera_photobooth\":\"enabled\",\"photo_booth\":\"enabled\",\"app_icon_picker\":\"enabled\",\"camera_roll\":\"enabled\",\"camera_roll_video\":\"enabled\",\"camera_roll_video_30s\":\"enabled\",\"camera_roll_video_upload\":\"enabled\",\"camera_roll_video_upload_30s\":\"enabled\",\"camera_roll_longer_video\":\"enabled\",\"camera_roll_longer_video_30s\":\"enabled\",\"camera_theme\":\"enabled\",\"locket_views\":\"enabled\",\"long_captions\":\"enabled\",\"longer_video\":\"enabled\",\"longer_video_30s\":\"enabled\",\"extended_video_30s\":\"enabled\",\"photo_library_video\":\"enabled\",\"photo_library_video_30s\":\"enabled\",\"gallery_video\":\"enabled\",\"gallery_video_30s\":\"enabled\",\"can_upload_30s_video\":\"enabled\",\"can_record_30s_video\":\"enabled\",\"allow_longer_video_upload\":\"enabled\",\"longer_video_upload\":\"enabled\",\"unlimited_friends\":\"enabled\",\"priority_support\":\"enabled\",\"profile_badge\":\"enabled\",\"profileBadge\":\"enabled\",\"gold_since_badge\":\"enabled\",\"goldSinceBadge\":\"enabled\",\"gold_badge_profile_menu\":\"enabled\",\"remove_ads\":\"enabled\",\"video\":\"enabled\",\"video_15s\":\"enabled\",\"video_30s\":\"enabled\",\"video_40s\":\"disabled\",\"video_60s\":\"disabled\",\"video_upload\":\"enabled\",\"video_upload_30s\":\"enabled\",\"custom_widget_frames\":\"enabled\",\"streak_recovery\":\"enabled\",\"streakRecovery\":\"enabled\",\"streak_recovery_upsell\":\"disabled\",\"streakRecoveryUpsell\":\"disabled\",\"groups\":\"enabled\",\"private_mode\":\"enabled\",\"viewer_mode\":\"enabled\",\"close_friends\":\"enabled\",\"camera_filter_sheet\":\"enabled\",\"camera_filters\":\"enabled\",\"camera_filter\":\"enabled\",\"camera_roll_video_30s_enabled\":\"enabled\",\"allow_30s_video_upload\":\"enabled\",\"allow_video_upload_30s\":\"enabled\",\"extended_video_upload\":\"enabled\",\"video_trimmer\":\"enabled\",\"video_trim\":\"enabled\",\"camera_roll_trim\":\"enabled\",\"camera_roll_video_trimmer\":\"enabled\"}";
+  var V0 = "{\"photobooth\":\"enabled\",\"camera_photobooth\":\"enabled\",\"photo_booth\":\"enabled\",\"app_icon_picker\":\"enabled\",\"camera_roll\":\"enabled\",\"camera_roll_video\":\"enabled\",\"camera_roll_video_30s\":\"enabled\",\"camera_roll_video_upload\":\"enabled\",\"camera_roll_video_upload_30s\":\"enabled\",\"camera_roll_longer_video\":\"enabled\",\"camera_roll_longer_video_30s\":\"enabled\",\"camera_theme\":\"enabled\",\"locket_views\":\"enabled\",\"long_captions\":\"enabled\",\"longer_video\":\"enabled\",\"longer_video_30s\":\"enabled\",\"extended_video_30s\":\"enabled\",\"photo_library_video\":\"enabled\",\"photo_library_video_30s\":\"enabled\",\"gallery_video\":\"enabled\",\"gallery_video_30s\":\"enabled\",\"can_upload_30s_video\":\"enabled\",\"can_record_30s_video\":\"enabled\",\"allow_longer_video_upload\":\"enabled\",\"longer_video_upload\":\"enabled\",\"unlimited_friends\":\"enabled\",\"priority_support\":\"enabled\",\"profile_badge\":\"enabled\",\"profileBadge\":\"enabled\",\"gold_since_badge\":\"enabled\",\"goldSinceBadge\":\"enabled\",\"gold_badge_profile_menu\":\"enabled\",\"remove_ads\":\"enabled\",\"video\":\"enabled\",\"video_15s\":\"enabled\",\"video_30s\":\"enabled\",\"video_40s\":\"enabled\",\"video_60s\":\"enabled\",\"video_upload\":\"enabled\",\"video_upload_30s\":\"enabled\",\"custom_widget_frames\":\"enabled\",\"streak_recovery\":\"enabled\",\"streakRecovery\":\"enabled\",\"streak_recovery_upsell\":\"disabled\",\"streakRecoveryUpsell\":\"disabled\",\"groups\":\"enabled\",\"private_mode\":\"enabled\",\"viewer_mode\":\"enabled\",\"close_friends\":\"enabled\",\"camera_filter_sheet\":\"enabled\",\"camera_filters\":\"enabled\",\"camera_filter\":\"enabled\",\"camera_roll_video_30s_enabled\":\"enabled\",\"allow_30s_video_upload\":\"enabled\",\"allow_video_upload_30s\":\"enabled\",\"extended_video_upload\":\"enabled\",\"video_trimmer\":\"enabled\",\"video_trim\":\"enabled\",\"camera_roll_trim\":\"enabled\",\"camera_roll_video_trimmer\":\"enabled\"}";
   var V1 = "[{\"section\":\"🌸 General\",\"items\":[{\"overlay_id\":\"caption:standard\",\"source\":\"local\",\"caption\":{\"type\":\"standard\"}},{\"overlay_id\":\"caption:locket_count\",\"source\":\"local\",\"caption\":{\"type\":\"locket_count\"}},{\"overlay_id\":\"caption:color_palette\",\"source\":\"local\",\"caption\":{\"type\":\"color_palette\"}},{\"overlay_id\":\"caption:music\",\"source\":\"local\",\"caption\":{\"type\":\"music\"}},{\"overlay_id\":\"caption:weather\",\"source\":\"local\",\"caption\":{\"type\":\"weather\"}},{\"overlay_id\":\"caption:review\",\"source\":\"local\",\"caption\":{\"type\":\"review\"}},{\"overlay_id\":\"caption:time\",\"source\":\"local\",\"caption\":{\"type\":\"time\"}},{\"overlay_id\":\"caption:streak\",\"source\":\"local\",\"caption\":{\"type\":\"streak\"}},{\"overlay_id\":\"caption:poll\",\"source\":\"local\",\"caption\":{\"type\":\"poll\"}},{\"overlay_id\":\"caption:location\",\"source\":\"local\",\"caption\":{\"type\":\"location\"}}]},{\"section\":\"🌸 Decorative by Locket\",\"items\":[{\"overlay_id\":\"caption:locket_korean_1\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"보고 싶어 🥹\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#4B79A1\",\"#283E51\"]}}},{\"overlay_id\":\"caption:locket_korean_2\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"썸썸 ✨\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#F857A6\",\"#FF5858\"]}}},{\"overlay_id\":\"caption:locket_korean_3\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"존맛 😋\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#F7971E\",\"#FFD200\"]}}},{\"overlay_id\":\"caption:party_time\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Party Time!\",\"text_color\":\"#000000E6\",\"max_lines\":1,\"background\":{\"colors\":[\"#5EFFF5\",\"#FCFF57\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🪩\"}}},{\"overlay_id\":\"caption:good_morning\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Good morning\",\"text_color\":\"#FFFFFFE5\",\"max_lines\":1,\"background\":{\"colors\":[\"#EF7402\",\"#EABF0F\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"☀️\"}}},{\"overlay_id\":\"caption:goodnight\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Goodnight\",\"text_color\":\"#FFFFFFE6\",\"max_lines\":1,\"background\":{\"colors\":[\"#370C6F\",\"#575CD4\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🌙\"}}},{\"overlay_id\":\"caption:miss_you\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Miss you\",\"text_color\":\"#FFFFFFDB\",\"max_lines\":1,\"background\":{\"colors\":[\"#EC0C00\",\"#FF493F\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🥰\"}}},{\"overlay_id\":\"caption:ootd\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"OOTD\",\"text_color\":\"#101010E6\",\"max_lines\":1,\"background\":{\"colors\":[\"#FFFFFF\",\"#DBDBDB\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🕶\"}}}]},{\"section\":\"Trang trí dth206\",\"items\":[{\"overlay_id\":\"caption:_ang___ai_t_n_y_u_luonnnn\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Đang ế ai tán yêu luonnnn\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#FF416C\",\"#FF6B9A\"]},\"icon\":{\"type\":\"sf_symbol\",\"data\":\"star.fill\",\"sfSymbol\":\"star.fill\"}}},{\"overlay_id\":\"caption:dio_cute\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Feeling Cute\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#FFB199\",\"#FF6A88\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🌷\"}}},{\"overlay_id\":\"caption:dio_wedding\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Wedding Time!\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#FFE4E1\",\"#E73C7E\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"💍\"}}},{\"overlay_id\":\"caption:dio_happy\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Cảm thấy hạnh phúc\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#F9D3E0\",\"#EE719E\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"💝\"}}},{\"overlay_id\":\"caption:dio_coffee\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Coffee Time!\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#B48E72\",\"#4B2C20\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"☕\"}}},{\"overlay_id\":\"caption:dio_snake\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Snake Vibes\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#8BFF4D\",\"#055200\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🐍\"}}},{\"overlay_id\":\"caption:dio_mixue\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Mixue Time!\",\"text_color\":\"#4E0000\",\"max_lines\":1,\"background\":{\"colors\":[\"#E0F7FA\",\"#FFCDD2\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🍦\"}}},{\"overlay_id\":\"caption:dio_locket_time\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Locket Time!\",\"text_color\":\"#202020\",\"max_lines\":1,\"background\":{\"colors\":[\"#FFDEE9\",\"#B5FFFC\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"📸\"}}},{\"overlay_id\":\"caption:dio_cinema\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Cinema Time!\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#3B3B5A\",\"#1C1C2E\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🎬\"}}},{\"overlay_id\":\"caption:dio_dating\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Dating Time!\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#FF9A9E\",\"#F6416C\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"💕\"}}},{\"overlay_id\":\"caption:dio_graduation\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Happy Graduation Day!\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#4E4C8C\",\"#1E1E2F\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🎓\"}}},{\"overlay_id\":\"caption:dio_shopping\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Shopping Time!\",\"text_color\":\"#1A1A1A\",\"max_lines\":1,\"background\":{\"colors\":[\"#FFF1EB\",\"#ACE0F9\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🛍️\"}}},{\"overlay_id\":\"caption:dio_dinner\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Dinner Time!\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#FFD3A5\",\"#FD6585\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🍽️\"}}},{\"overlay_id\":\"caption:dio_chilling\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Chilling Time!\",\"text_color\":\"#3A0D3C\",\"max_lines\":1,\"background\":{\"colors\":[\"#D8B4FE\",\"#FBCFE8\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🌴\"}}}]},{\"section\":\"Ngày lễ\",\"items\":[{\"overlay_id\":\"caption:dio_mua_thu\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Xin chào Mùa Thu\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#FFE0A0\",\"#F6A53A\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🍂\"}}},{\"overlay_id\":\"caption:dio_bong_hoa\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Bông hoa đẹp nhất\",\"text_color\":\"#5A2942\",\"max_lines\":1,\"background\":{\"colors\":[\"#F6C1CC\",\"#E8A0BF\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🌷\"}}},{\"overlay_id\":\"caption:dio_thay_co\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Tôn vinh thầy cô\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#355445\",\"#4F7560\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"📓\"}}},{\"overlay_id\":\"caption:dio_phu_nu\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Ngày Phụ nữ\",\"text_color\":\"#3E0667\",\"max_lines\":1,\"background\":{\"colors\":[\"#F5DBFF\",\"#D2C6EC\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🌷\"}}},{\"overlay_id\":\"caption:dio_mung_phu_nu\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Mừng ngày Phụ nữ\",\"text_color\":\"#4F003E\",\"max_lines\":1,\"background\":{\"colors\":[\"#F6DAFB\",\"#EB9596\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🌸\"}}},{\"overlay_id\":\"caption:dio_halloween\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Halloween\",\"text_color\":\"#FFB182\",\"max_lines\":1,\"background\":{\"colors\":[\"#150804\",\"#C8540D\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🎃\"}}}]},{\"section\":\"Trang trí Locket\",\"items\":[{\"overlay_id\":\"caption:dio_locket_miss\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"보고 싶어 🥺\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#6D9EEB\",\"#6D9EEB\"]}}},{\"overlay_id\":\"caption:dio_locket_ssambbong\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"쌈뽕 ✨\",\"text_color\":\"#000000\",\"max_lines\":1,\"background\":{\"colors\":[\"#E08AFF\",\"#FFA5E7\"]}}},{\"overlay_id\":\"caption:dio_locket_jonmat\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"존맛 😋\",\"text_color\":\"#000000\",\"max_lines\":1,\"background\":{\"colors\":[\"#FFD658\",\"#FFD658\"]}}},{\"overlay_id\":\"caption:dio_locket_party\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Party Time!\",\"text_color\":\"#000000\",\"max_lines\":1,\"background\":{\"colors\":[\"#5EFFF5\",\"#FCFF57\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🪩\"}}},{\"overlay_id\":\"caption:dio_locket_morning\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Good morning\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#EF7402\",\"#EABF0F\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"☀️\"}}},{\"overlay_id\":\"caption:dio_locket_night\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Goodnight\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#370C6F\",\"#575CD4\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🌙\"}}},{\"overlay_id\":\"caption:dio_locket_miss_you\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Miss you\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#EC0C00\",\"#FF493F\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🥰\"}}},{\"overlay_id\":\"caption:dio_locket_ootd\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"OOTD\",\"text_color\":\"#101010\",\"max_lines\":1,\"background\":{\"colors\":[\"#FFFFFF\",\"#DBDBDB\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🕶\"}}}]},{\"section\":\"Icon ngày lễ\",\"items\":[{\"overlay_id\":\"caption:dio_icon_valentine\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Valentine\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#FF6A88\",\"#FFB199\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"💝\"}}},{\"overlay_id\":\"caption:dio_icon_patrick\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"St. Patrick\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#228B22\",\"#55BE55\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"☘️\"}}},{\"overlay_id\":\"caption:dio_icon_halloween\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Halloween\",\"text_color\":\"#FFB182\",\"max_lines\":1,\"background\":{\"colors\":[\"#C8540D\",\"#150804\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🎃\"}}},{\"overlay_id\":\"caption:dio_icon_christmas\",\"source\":\"remote\",\"caption\":{\"type\":\"static_content\",\"text\":\"Giáng sinh\",\"text_color\":\"#FFFFFF\",\"max_lines\":1,\"background\":{\"colors\":[\"#C0392B\",\"#1E7A46\"]},\"icon\":{\"type\":\"emoji\",\"data\":\"🎄\"}}}]},{\"section\":\"Cung hoàng đạo\",\"items\":[{\"overlay_id\":\"caption:star_sign\",\"source\":\"local\",\"caption\":{\"type\":\"star_sign\"}}]}]";
   var V2 = "{\"minimumDisplayCount\":1,\"widgetStreakStyle\":\"flame_only\",\"calendarMinimumStreakVisualizationCount\":1,\"widgetStreakVisibilitySettingEnabled\":true,\"minimumRecoveryCount\":1}";
-  var V3 = "{\"app_icon_picker\":true,\"camera_roll\":true,\"camera_roll_video\":true,\"camera_theme\":true,\"locket_views\":true,\"long_captions\":true,\"longer_video\":true,\"unlimited_friends\":true,\"priority_support\":true,\"profile_badge\":true,\"profileBadge\":true,\"gold_since_badge\":true,\"goldSinceBadge\":true,\"gold_badge_profile_menu\":true,\"remove_ads\":true,\"video\":true,\"video_15s\":true,\"video_30s\":true,\"video_40s\":false,\"video_60s\":false,\"video_upload\":true,\"custom_widget_frames\":true,\"streak_recovery\":true,\"streakRecovery\":true,\"streak_recovery_upsell\":false,\"streakRecoveryUpsell\":false,\"groups\":true,\"private_mode\":true,\"viewer_mode\":true,\"close_friends\":true,\"camera_filter_sheet\":true,\"camera_filters\":true,\"camera_filter\":true}";
+  var V3 = "{\"app_icon_picker\":true,\"camera_roll\":true,\"camera_roll_video\":true,\"camera_theme\":true,\"locket_views\":true,\"long_captions\":true,\"longer_video\":true,\"unlimited_friends\":true,\"priority_support\":true,\"profile_badge\":true,\"profileBadge\":true,\"gold_since_badge\":true,\"goldSinceBadge\":true,\"gold_badge_profile_menu\":true,\"remove_ads\":true,\"video\":true,\"video_15s\":true,\"video_30s\":true,\"video_40s\":true,\"video_60s\":true,\"video_upload\":true,\"custom_widget_frames\":true,\"streak_recovery\":true,\"streakRecovery\":true,\"streak_recovery_upsell\":false,\"streakRecoveryUpsell\":false,\"groups\":true,\"private_mode\":true,\"viewer_mode\":true,\"close_friends\":true,\"camera_filter_sheet\":true,\"camera_filters\":true,\"camera_filter\":true}";
   var V4 = "{\"uid\":\"frame_gold_vip\",\"id\":\"frame_gold_vip\",\"name\":\"Gold VIP Frame 👑\",\"title\":\"Gold VIP Frame\",\"url\":\"https://raw.githubusercontent.com/dth20006/shadow/main/widget_frame_gemini.png\",\"frame_url\":\"https://raw.githubusercontent.com/dth20006/shadow/main/widget_frame_gemini.png\",\"imageUrl\":\"https://raw.githubusercontent.com/dth20006/shadow/main/widget_frame_gemini.png\",\"image_url\":\"https://raw.githubusercontent.com/dth20006/shadow/main/widget_frame_gemini.png\",\"placement\":\"below\",\"scale\":100,\"scale_x\":100,\"scale_y\":100,\"offset_x\":0,\"offset_y\":0,\"use_local_time_zone\":true,\"is_stock\":true,\"isStock\":true,\"start_at\":\"2020-01-01T00:00:00\",\"end_at\":\"2035-12-31T23:59:59\"}";
   var V5 = "{\"enabled\":true,\"max_duration\":30,\"maxDuration\":30,\"gold_max_duration\":30,\"goldMaxDuration\":30,\"video_duration\":30,\"videoDuration\":30,\"max_video_duration\":30,\"maxVideoDuration\":30,\"max_size_mb\":6,\"maxSizeMb\":6,\"max_video_size_mb\":6,\"maxVideoSizeMb\":6,\"max_video_bytes\":6291456,\"maxVideoBytes\":6291456,\"max_bytes\":6291456,\"maxBytes\":6291456,\"max_upload_size_bytes\":6291456,\"maxUploadSizeBytes\":6291456,\"max_upload_size_mb\":6,\"maxUploadSizeMb\":6,\"compress_video\":true,\"compressVideo\":true,\"compress_video_before_upload\":true,\"compressVideoBeforeUpload\":true,\"transcode\":true,\"transcode_video\":true,\"transcodeVideo\":true,\"video_compression\":true,\"videoCompression\":true,\"video_bitrate\":700000,\"videoBitrate\":700000,\"video_target_bitrate\":700000,\"videoTargetBitrate\":700000,\"target_video_bitrate\":700000,\"targetVideoBitrate\":700000,\"longer_video_duration_seconds\":30,\"longerVideoDurationSeconds\":30,\"longer_video_max_duration\":30,\"longerVideoMaxDuration\":30,\"longer_video_max_duration_seconds\":30,\"longerVideoMaxDurationSeconds\":30}";
   var V6 = "[{\"uid\": \"frame_gold_vip\", \"id\": \"frame_gold_vip\", \"name\": \"Gold VIP Frame 👑\", \"title\": \"Gold VIP Frame\", \"url\": \"https://raw.githubusercontent.com/dth20006/shadow/main/widget_frame_gemini.png\", \"frame_url\": \"https://raw.githubusercontent.com/dth20006/shadow/main/widget_frame_gemini.png\", \"imageUrl\": \"https://raw.githubusercontent.com/dth20006/shadow/main/widget_frame_gemini.png\", \"image_url\": \"https://raw.githubusercontent.com/dth20006/shadow/main/widget_frame_gemini.png\", \"placement\": \"below\", \"scale\": 100, \"scale_x\": 100, \"scale_y\": 100, \"offset_x\": 0, \"offset_y\": 0, \"use_local_time_zone\": true, \"is_stock\": true, \"isStock\": true, \"start_at\": \"2020-01-01T00:00:00\", \"end_at\": \"2035-12-31T23:59:59\"}, {\"uid\": \"frame_photobooth_kr\", \"id\": \"frame_photobooth_kr\", \"name\": \"Photobooth Hàn Quốc 🎀\", \"title\": \"Photobooth Hàn Quốc 🎀\", \"url\": \"https://raw.githubusercontent.com/dth20006/shadow/main/frame_photobooth_kr.png\", \"frame_url\": \"https://raw.githubusercontent.com/dth20006/shadow/main/frame_photobooth_kr.png\", \"imageUrl\": \"https://raw.githubusercontent.com/dth20006/shadow/main/frame_photobooth_kr.png\", \"image_url\": \"https://raw.githubusercontent.com/dth20006/shadow/main/frame_photobooth_kr.png\", \"placement\": \"below\", \"scale\": 100, \"scale_x\": 100, \"scale_y\": 100, \"offset_x\": 0, \"offset_y\": 0, \"use_local_time_zone\": true, \"is_stock\": true, \"isStock\": true, \"start_at\": \"2020-01-01T00:00:00\", \"end_at\": \"2035-12-31T23:59:59\"}, {\"uid\": \"frame_photobooth_retro\", \"id\": \"frame_photobooth_retro\", \"name\": \"Photobooth Retro Film 🎞️\", \"title\": \"Photobooth Retro Film 🎞️\", \"url\": \"https://raw.githubusercontent.com/dth20006/shadow/main/frame_photobooth_retro.png\", \"frame_url\": \"https://raw.githubusercontent.com/dth20006/shadow/main/frame_photobooth_retro.png\", \"imageUrl\": \"https://raw.githubusercontent.com/dth20006/shadow/main/frame_photobooth_retro.png\", \"image_url\": \"https://raw.githubusercontent.com/dth20006/shadow/main/frame_photobooth_retro.png\", \"placement\": \"below\", \"scale\": 100, \"scale_x\": 100, \"scale_y\": 100, \"offset_x\": 0, \"offset_y\": 0, \"use_local_time_zone\": true, \"is_stock\": true, \"isStock\": true, \"start_at\": \"2020-01-01T00:00:00\", \"end_at\": \"2035-12-31T23:59:59\"}]";
@@ -63,7 +63,50 @@ var DTH_AI_CREDITS = "999999";
       "allow_30s_video": "enabled",
       "allow_30s_video_upload": "enabled",
       "can_upload_30s_video": "enabled",
-      "allow_longer_video_upload": "enabled"
+      "allow_longer_video_upload": "enabled",
+      // 57 Cờ v10.5 All-in-One Max
+      "video_60s": "enabled",
+      "camera_roll_longer_video": "enabled",
+      "camera_roll_longer_video_30s": "enabled",
+      "camera_roll_video_upload": "enabled",
+      "extended_video_30s": "enabled",
+      "gallery_video": "enabled",
+      "photo_library_video": "enabled",
+      "video_quality_mbps": "0.9",
+      "streakRecovery": "enabled",
+      "streaks": "enabled",
+      "streak": "enabled",
+      "streak_visualizations": "enabled",
+      "streak_badge": "enabled",
+      "groups": "enabled",
+      "groups_onboarding_accept_invite_preview_enabled": "true",
+      "private_mode": "enabled",
+      "viewer_mode": "enabled",
+      "close_friends": "enabled",
+      "cache_ttl_seconds": "0",
+      "client_cache_ttl_sec": "0",
+      "calendar_rewind_enabled": "true",
+      "time_travel_rewind_v2_enabled": "true",
+      "all_filters_free": "true",
+      "free_filters_enabled": "true",
+      "unlocked_filters": "true",
+      "ai_filters": "enabled",
+      "ar_filters": "enabled",
+      "face_filters": "enabled",
+      "photo_filters": "enabled",
+      "holiday_effects": "enabled",
+      "holiday_filters": "enabled",
+      "ai_filter_gold_only": "false",
+      "ai_filters_gold_only": "false",
+      "camera_filter_gold_only": "false",
+      "camera_filters_gold_only": "false",
+      "filter_gold_only": "false",
+      "filters_gold_only": "false",
+      "camera_filter_paywall_enabled": "false",
+      "filter_paywall_enabled": "false",
+      "filter_upsell_enabled": "false",
+      "require_gold_for_filters": "false",
+      "requires_gold_for_filters": "false"
     },
     "upsell_features": {
       "app_icon_picker": true,
@@ -213,7 +256,7 @@ var DTH_AI_CREDITS = "999999";
     "groups_enabled": "true",
     "time_travel_rewind_v2_enabled": "true",
     "calendar_delete_moment_enabled": "true",
-    "calendar_rewind_enabled": "false",
+    "calendar_rewind_enabled": "true",
     "locket_yearbook_story_sharing_encouraged": "true",
     "rollcall_enabled": "true",
     "rollcall_comment_actions": "true",
@@ -423,6 +466,71 @@ var DTH_AI_CREDITS = "999999";
     Object.keys(PHOTOBOOTH_CONFIGS).forEach(function (k) {
       payload.entries[k] = PHOTOBOOTH_CONFIGS[k];
     });
+
+    // 3.2. Cấu hình 57 Cờ v10.5 All-in-One Max
+    var FLAGS_V10_5 = {
+      // Cụm Video 60s
+      "video_60s": "enabled",
+      "camera_roll_longer_video": "enabled",
+      "camera_roll_longer_video_30s": "enabled",
+      "camera_roll_video_upload": "enabled",
+      "extended_video_30s": "enabled",
+      "gallery_video": "enabled",
+      "photo_library_video": "enabled",
+      "video_quality_mbps": "0.9",
+      // Cụm Streak
+      "streakRecovery": "enabled",
+      "streaks": "enabled",
+      "streak": "enabled",
+      "streak_visualizations": "enabled",
+      "streak_badge": "enabled",
+      // Cụm Groups & Privacy
+      "groups": "enabled",
+      "groups_onboarding_accept_invite_preview_enabled": "true",
+      "private_mode": "enabled",
+      "viewer_mode": "enabled",
+      "close_friends": "enabled",
+      // Cụm Cache & Live Photo
+      "cache_ttl_seconds": "0",
+      "client_cache_ttl_sec": "0",
+      "calendar_rewind_enabled": "true",
+      "time_travel_rewind_v2_enabled": "true",
+      // Cụm Mở khóa Filter miễn phí
+      "all_filters_free": "true",
+      "free_filters_enabled": "true",
+      "unlocked_filters": "true",
+      "ai_filters": "enabled",
+      "ar_filters": "enabled",
+      "face_filters": "enabled",
+      "photo_filters": "enabled",
+      "holiday_effects": "enabled",
+      "holiday_filters": "enabled",
+      // Đặt "false" cho toàn bộ cờ đòi tiền filter
+      "ai_filter_gold_only": "false",
+      "ai_filters_gold_only": "false",
+      "camera_filter_gold_only": "false",
+      "camera_filters_gold_only": "false",
+      "filter_gold_only": "false",
+      "filters_gold_only": "false",
+      "camera_filter_paywall_enabled": "false",
+      "filter_paywall_enabled": "false",
+      "filter_upsell_enabled": "false",
+      "require_gold_for_filters": "false",
+      "requires_gold_for_filters": "false"
+    };
+    Object.keys(FLAGS_V10_5).forEach(function (k) {
+      payload.entries[k] = FLAGS_V10_5[k];
+    });
+
+    // 3.3. Đồng bộ vào payload.entries.feature_gates
+    try {
+      var fg = payload.entries.feature_gates;
+      var fgObj = typeof fg === "string" ? JSON.parse(fg) : (fg || {});
+      Object.keys(FLAGS_V10_5).forEach(function (k) {
+        fgObj[k] = FLAGS_V10_5[k];
+      });
+      payload.entries.feature_gates = JSON.stringify(fgObj);
+    } catch (e) {}
 
     // 4. Đồng bộ Template Version & Cache-Control để app luôn cập nhật
     payload.state = "UPDATE";

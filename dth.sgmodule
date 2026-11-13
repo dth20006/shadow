@@ -1,14 +1,21 @@
 #!name=👑 Locket Gold All-In-One (dth206)
-#!desc=Module Locket Gold VIP v10.0 đỉnh cao bởi dth206 | Mở khóa 160 Entitlements + 24 Khung Widget Hoàng Gia + 40+ Stickers VIP + 230+ Captions VIP + Toàn diện AI Camera & Bộ Lọc Biến Hình + Video 60s/30s + Chặn QUIC & Tracking + Đồng bộ Locket Profile Gold
+#!desc=Module Locket Gold VIP v10.5 All-in-One Max bởi dth206 | Mở khóa 160 Entitlements + 24 Khung Widget Hoàng Gia + 40+ Stickers VIP + 330+ Captions VIP + Toàn diện AI Camera & Bộ Lọc Biến Hình + Video 60s/30s + Chặn QUIC, Sentry & Tracking + Đồng bộ Locket Profile Gold
 #!author=dth206
 #!homepage=https://github.com/dth20006/shadow
 #!system=ios
+
+[Host]
+firebaseremoteconfigrealtime.googleapis.com = 0.0.0.0
 
 [Rule]
 DOMAIN,appattest.apple.com,REJECT
 DOMAIN,firebaseremoteconfigrealtime.googleapis.com,REJECT
 DOMAIN-SUFFIX,firebaselogging.googleapis.com,REJECT
 DOMAIN-SUFFIX,firebaselogging-pa.googleapis.com,REJECT
+DOMAIN-SUFFIX,sentry.io,REJECT
+DOMAIN-SUFFIX,ingest.sentry.io,REJECT
+AND,((DOMAIN,api.locketcamera.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,us-central1-locket-4252a.cloudfunctions.net),(PROTOCOL,UDP)),REJECT
 AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT
 
 [Header Rewrite]
@@ -16,25 +23,33 @@ AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT
 ^https?:\/\/(?:api|rc-cdn|sdk)\.revenuecat\.com\/v1\/(?:receipts|subscribers\/[^/?]+)\/?(?:\?.*)?$ header-del X-RevenueCat-ETag
 ^https?:\/\/(?:api|rc-cdn|sdk)\.revenuecat\.com\/v1\/(?:receipts|subscribers\/[^/?]+)\/?(?:\?.*)?$ header-del if-none-match
 ^https?:\/\/(?:api|rc-cdn|sdk)\.revenuecat\.com\/v1\/(?:receipts|subscribers\/[^/?]+)\/?(?:\?.*)?$ header-del If-None-Match
+^https?:\/\/(?:api|rc-cdn|sdk)\.revenuecat\.com\/v1\/(?:receipts|subscribers\/[^/?]+)\/?(?:\?.*)?$ header-del if-modified-since
+^https?:\/\/(?:api|rc-cdn|sdk)\.revenuecat\.com\/v1\/(?:receipts|subscribers\/[^/?]+)\/?(?:\?.*)?$ header-del If-Modified-Since
+^https?:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/(?:locket-4252a|locket-camera)\/.+$ header-del if-none-match
+^https?:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/(?:locket-4252a|locket-camera)\/.+$ header-del If-None-Match
+^https?:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/(?:locket-4252a|locket-camera)\/.+$ header-del if-modified-since
+^https?:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/(?:locket-4252a|locket-camera)\/.+$ header-del If-Modified-Since
+^https?:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/(?:locket-4252a|locket-camera)\/.+$ header-del x-goog-if-none-match
+^https?:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/(?:locket-4252a|locket-camera)\/.+$ header-del X-Goog-If-None-Match
 
 [Script]
 # 1. Mở khóa Locket Gold VIP Vĩnh Viễn & 160 Quyền VIP (RevenueCat)
-dth_gold = type=http-response, pattern=^https?:\/\/((api|rc-cdn|sdk)\.revenuecat\.com|revenuecat\.com)\/v1\/(receipts|subscribers|product_entitlement_mapping|offerings).*, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_gold.js?v=10.0, requires-body=true, max-size=-1, timeout=15
+dth_gold = type=http-response, pattern=^https?:\/\/((api|rc-cdn|sdk)\.revenuecat\.com|revenuecat\.com)\/v1\/(receipts|subscribers|product_entitlement_mapping|offerings).*, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_gold.js?v=10.5, requires-body=true, max-size=-1, timeout=15
 
 # 2. Xóa Header ETag & Bỏ cache 304 RevenueCat / Firebase
-dth_del_header = type=http-request, pattern=^https?:\/\/((api|rc-cdn|sdk)\.revenuecat\.com|revenuecat\.com|firebaseremoteconfig\.googleapis\.com)\/.+, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_del_header.js?v=10.0, timeout=15
+dth_del_header = type=http-request, pattern=^https?:\/\/((api|rc-cdn|sdk)\.revenuecat\.com|revenuecat\.com|firebaseremoteconfig\.googleapis\.com)\/.+, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_del_header.js?v=10.5, timeout=15
 
 # 3. Yêu cầu Full Remote Config US (Bỏ If-None-Match tránh lỗi 304 không có body)
-dth_rc_request = type=http-request, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/(?:locket-4252a|locket-camera)\/namespaces\/firebase:fetch, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_rc_request.js?v=10.0, requires-body=true, max-size=-1, timeout=15
+dth_rc_request = type=http-request, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/(?:locket-4252a|locket-camera)\/namespaces\/firebase:fetch, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_rc_request.js?v=10.5, requires-body=true, max-size=-1, timeout=15
 
-# 4. Kích hoạt 1,014 Cờ Firebase, 24 Khung Widget, 40+ Stickers, 230+ Captions, Bộ Lọc AI & Video 60s
-dth_unlocked = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/(?:locket-4252a|locket-camera)\/.+, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_unlocked.js?v=10.0, requires-body=true, max-size=-1, timeout=15
+# 4. Kích hoạt 1,014 Cờ Firebase, 24 Khung Widget, 40+ Stickers, 330+ Captions, Bộ Lọc AI & Video 60s
+dth_unlocked = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/(?:locket-4252a|locket-camera)\/.+, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_unlocked.js?v=10.5, requires-body=true, max-size=-1, timeout=15
 
 # 5. Giả lập đổi thông tin cá nhân & Huy hiệu Gold (api.locketcamera.com)
-dth_badge = type=http-request, pattern=^https?:\/\/.*api\.locketcamera\.com\/changeProfileInfo.*, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_profile.js?v=10.0, timeout=60
+dth_badge = type=http-request, pattern=^https?:\/\/.*api\.locketcamera\.com\/changeProfileInfo.*, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_profile.js?v=10.5, timeout=60
 
 # 6. Đồng bộ huy hiệu Locket Gold Profile trên toàn hệ thống api.locketcamera.com
-dth_user = type=http-response, pattern=^https?:\/\/.*api\.locketcamera\.com\/.*, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_profile.js?v=10.0, requires-body=true, max-size=-1, timeout=60
+dth_user = type=http-response, pattern=^https?:\/\/.*api\.locketcamera\.com\/.*, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_profile.js?v=10.5, requires-body=true, max-size=-1, timeout=60
 
 [MITM]
-hostname = %INSERT% api.revenuecat.com, rc-cdn.revenuecat.com, sdk.revenuecat.com, revenuecat.com, firebaseremoteconfig.googleapis.com, api.locketcamera.com, *.locketcamera.com
+hostname = %INSERT% api.revenuecat.com, rc-cdn.revenuecat.com, sdk.revenuecat.com, revenuecat.com, firebaseremoteconfig.googleapis.com, api.locketcamera.com, *.locketcamera.com, us-central1-locket-4252a.cloudfunctions.net

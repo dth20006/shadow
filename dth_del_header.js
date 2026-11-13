@@ -1,5 +1,5 @@
-// dth206 - Request Header Optimizer v10.0
-// Xóa ETag / If-None-Match / If-Modified-Since để ép RevenueCat và Firebase luôn trả về HTTP 200 kèm đầy đủ JSON
+// dth206 - Request Header Optimizer v10.5 All-in-One Max
+// Xóa ETag / If-None-Match / If-Modified-Since / x-goog-if-none-match để ép RevenueCat và Firebase luôn trả về HTTP 200 kèm đầy đủ JSON
 // Bản quyền thuộc về dth206 | https://github.com/dth20006/shadow
 
 (function () {
@@ -26,7 +26,8 @@
     var targets = [
       "x-revenuecat-etag",
       "if-none-match",
-      "if-modified-since"
+      "if-modified-since",
+      "x-goog-if-none-match"
     ];
 
     for (var i = 0; i < targets.length; i++) {
