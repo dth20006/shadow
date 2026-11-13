@@ -44,8 +44,8 @@ dth_rc_request = type=http-request, pattern=^https:\/\/firebaseremoteconfig\.goo
 # 4. Kích hoạt 1,014 Cờ Firebase, 24 Khung Widget, 40+ Stickers, 330+ Captions, Bộ Lọc AI & Video 60s
 dth_unlocked = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/(?:locket-4252a|locket-camera)\/.+, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_unlocked.js?v=10.5, requires-body=true, max-size=-1, timeout=15
 
-# 5. Giả lập đổi thông tin cá nhân & Huy hiệu Gold (api.locketcamera.com)
-dth_badge = type=http-request, pattern=^https?:\/\/.*api\.locketcamera\.com\/changeProfileInfo.*, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_profile.js?v=10.5, timeout=60
+# 5. Đổi thông tin cá nhân & Đồng bộ Viền Widget Gold (api.locketcamera.com)
+dth_badge = type=http-response, pattern=^https?:\/\/.*api\.locketcamera\.com\/changeProfileInfo.*, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_profile.js?v=10.5, requires-body=true, max-size=-1, timeout=60
 
 # 6. Đồng bộ huy hiệu Locket Gold Profile trên toàn hệ thống api.locketcamera.com
 dth_user = type=http-response, pattern=^https?:\/\/.*api\.locketcamera\.com\/.*, script-path=https://raw.githubusercontent.com/dth20006/shadow/main/dth_profile.js?v=10.5, requires-body=true, max-size=-1, timeout=60
