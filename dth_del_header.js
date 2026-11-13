@@ -1,25 +1,42 @@
-// dth206 - RevenueCat Request Header Optimizer
-// Ban quyen thuoc ve dth206 | https://github.com/dth20006/shadow
+// dth206 - Request Header Optimizer v10.0
+// Xóa ETag / If-None-Match / If-Modified-Since để ép RevenueCat và Firebase luôn trả về HTTP 200 kèm đầy đủ JSON
+// Bản quyền thuộc về dth206 | https://github.com/dth20006/shadow
+
 (function () {
   "use strict";
+
   try {
-    var request = typeof $request === "object" ? $request : {};
+    var request = (typeof $request === "object" && $request) ? $request : {};
     var headers = request.headers || {};
-    var keys = Object.keys(headers);
-    var ua = "";
-    for (var i = 0; i < keys.length; i++) {
-      if (keys[i].toLowerCase() === "user-agent") ua = String(headers[keys[i]]);
+    var modified = Object.assign({}, headers);
+
+    function setEmptyOrDelete(key) {
+      var lower = key.toLowerCase();
+      var found = false;
+      for (var k in modified) {
+        if (k.toLowerCase() === lower) {
+          modified[k] = "";
+          delete modified[k];
+          found = true;
+        }
+      }
     }
-    if (!/Locket/i.test(ua) ||
-        !/^https:\/\/api\.revenuecat\.com\/v1\/(?:receipts|subscribers\/[^/?]+)\/?(?:\?.*)?$/.test(String(request.url || ""))) {
-      return $done({});
+
+    // Xóa toàn bộ các header gây cache 304
+    var targets = [
+      "x-revenuecat-etag",
+      "if-none-match",
+      "if-modified-since"
+    ];
+
+    for (var i = 0; i < targets.length; i++) {
+      setEmptyOrDelete(targets[i]);
     }
-    var output = Object.assign({}, headers);
-    for (var j = 0; j < keys.length; j++) {
-      var k = keys[j].toLowerCase();
-      if (k === "x-revenuecat-etag" || k === "if-none-match") delete output[keys[j]];
-    }
-    return $done({ headers: output });
+
+    modified["Cache-Control"] = "no-cache";
+    modified["Pragma"] = "no-cache";
+
+    return $done({ headers: modified });
   } catch (error) {
     return $done({});
   }
