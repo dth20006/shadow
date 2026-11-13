@@ -9,7 +9,7 @@
   // Ví dụ: Muốn huy hiệu từ năm 2005 đổi thành 2005, năm 2020 đổi thành 2020,...
   // =========================================================================
   var SETTINGS = {
-    goldSince: "2005-11-01T00:00:00+07:00", // Ngày bắt đầu Gold (chỉnh năm ở đây)
+    goldSince: "2006-01-26T00:00:00+07:00", // Ngày bắt đầu Gold (chỉnh năm ở đây)
     goldUntil: "2099-12-31T23:59:59+07:00"  // Ngày hết hạn Gold (vĩnh viễn)
   };
 
@@ -38,7 +38,7 @@
 
     var start = new Date(SETTINGS.goldSince);
     var end = new Date(SETTINGS.goldUntil);
-    var sinceIso = (!isNaN(start.getTime())) ? start.toISOString() : "2005-11-01T00:00:00Z";
+    var sinceIso = (!isNaN(start.getTime())) ? start.toISOString() : "2006-01-26T00:00:00Z";
     var untilIso = (!isNaN(end.getTime())) ? end.toISOString() : "2099-12-31T23:59:59Z";
     var nowIso = new Date().toISOString();
     var nowMs = Date.now();
